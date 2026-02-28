@@ -1,0 +1,8 @@
+{
+  "name": "tubbys-tumblerz",
+  "version": "1.0.0",
+  "description": "Tubby's Tumblerz website with Etsy integration",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}

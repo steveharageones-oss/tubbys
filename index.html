@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tubby's Tumblerz | Custom Tumblers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- updated -->
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home">
+                <img src="logo.png" alt="Tubby's Tumblerz" class="logo-img">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#inventory">Shop</a></li>
+                <li><a href="#custom-request">Custom Orders</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="logo.png" alt="Tubby's Tumblerz" class="hero-logo">
+            <h1>Custom handcrafted tumblers for any occasion!</h1>
+            <a href="#inventory" class="cta-button">Shop Now</a>
+        </div>
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,64 C360,120 720,0 1080,64 C1260,96 1380,80 1440,64 L1440,120 L0,120Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Inventory Section - Dynamic from Etsy -->
+    <section id="inventory" class="inventory">
+        <div class="container">
+            <h2>Our Collection</h2>
+            <p class="subtitle">Live from our Etsy shop &mdash; click any item to order!</p>
+
+            <!-- Loading State -->
+            <div id="loading-state" class="loading-state">
+                <div class="spinner"></div>
+                <p>Loading products from our Etsy shop...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="error-state" class="error-state" style="display:none;">
+                <span class="error-icon">&#x26A0;</span>
+                <p>Oops! We couldn't load our products right now.</p>
+                <p class="error-detail" id="error-detail"></p>
+                <a href="https://www.etsy.com/shop/TubbysTumblerz" target="_blank" rel="noopener" class="etsy-fallback-btn">
+                    Visit Our Etsy Shop Directly
+                </a>
+            </div>
+
+            <!-- Products Grid (populated by JS) -->
+            <div id="product-grid" class="product-grid"></div>
+
+            <!-- Visit Shop Link -->
+            <div id="shop-link" class="shop-link-container" style="display:none;">
+                <a href="https://www.etsy.com/shop/TubbysTumblerz" target="_blank" rel="noopener" class="visit-shop-btn">
+                    <span class="etsy-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M9.16 4.945c0-.03.02-.07.065-.07h.107c1.725 0 3.48.18 4.986.99.51.27.96.63 1.32 1.065.39.465.66 1.02.75 1.605.09.42.06.84-.09 1.245-.45 1.185-1.74 1.845-2.925 2.1-.18.04-.36.06-.54.09l-.06.015c-.03 0-.06-.03-.045-.06l.18-.57c.36-1.11.75-2.25.63-3.42-.06-.57-.255-1.11-.615-1.56-.36-.465-.87-.78-1.395-.99-.93-.375-1.95-.45-2.94-.45h-.105c-.045 0-.075-.03-.075-.075V4.95l.003-.005z"/>
+                        </svg>
+                    </span>
+                    View All on Etsy
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Request Section -->
+    <section id="custom-request" class="custom-request">
+        <div class="container">
+            <h2>Request a Custom Design</h2>
+            <p class="subtitle">Want something unique? We create custom tumblers for ANY design!</p>
+
+            <div class="custom-request-content">
+                <div class="custom-request-info">
+                    <div class="custom-info-card">
+                        <span class="custom-info-icon">&#x1F3A8;</span>
+                        <h3>Any Design, Any Theme</h3>
+                        <p>Have a specific character, logo, or design in mind? We can make it happen! Some designs aren't available in our Etsy shop, but we can create them as a custom order just for you.</p>
+                    </div>
+                    <div class="custom-info-card">
+                        <span class="custom-info-icon">&#x1F4AC;</span>
+                        <h3>How It Works</h3>
+                        <ol class="custom-steps">
+                            <li>Fill out the form with your design idea</li>
+                            <li>Attach any reference images if you have them</li>
+                            <li>We'll reply within 24-48 hours with a quote</li>
+                            <li>Approve the design &amp; we start crafting!</li>
+                        </ol>
+                    </div>
+                    <div class="custom-info-card">
+                        <span class="custom-info-icon">&#x1F4B0;</span>
+                        <h3>Pricing</h3>
+                        <p>Custom tumblers typically range from <strong>$18 - $35</strong> depending on design complexity. We'll always confirm pricing before starting your order.</p>
+                    </div>
+                </div>
+
+                <div class="custom-request-form-wrapper">
+                    <form action="https://formsubmit.co/tubbystumblerz@gmail.com" method="POST" class="custom-form">
+                        <!-- Formsubmit configuration -->
+                        <input type="hidden" name="_subject" value="New Custom Tumbler Request!">
+                        <input type="hidden" name="_captcha" value="true">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://bespoke-chebakia-92dbc5.netlify.app/#success">
+
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Your Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="you@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="design">Design Description *</label>
+                            <textarea id="design" name="design" required rows="4" placeholder="Describe the tumbler design you'd like — characters, colors, theme, etc."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reference">Reference Image URL (optional)</label>
+                            <input type="url" id="reference" name="reference" placeholder="https://example.com/image.jpg">
+                            <span class="form-hint">Paste a link to any reference image or inspiration</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tumbler-size">Tumbler Size</label>
+                            <input type="text" id="tumbler-size" name="tumbler-size" value="20 oz" readonly style="background: rgba(255,255,255,0.1); cursor: default;">
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Additional Notes (optional)</label>
+                            <textarea id="notes" name="notes" rows="2" placeholder="Anything else we should know? Gift? Deadline?"></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span>&#x1F4E8;</span> Send Request
+                        </button>
+                    </form>
+
+                    <div class="or-email">
+                        <p>Or email us directly at:</p>
+                        <a href="mailto:tubbystumblerz@gmail.com?subject=Custom%20Tumbler%20Request" class="email-link">
+                            &#x1F4E7; tubbystumblerz@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Tubby's Tumblerz</h2>
+            <div class="about-content">
+                <p>At Tubby's Tumblerz, we believe staying hydrated should be fun and stylish! Every piece is handcrafted with love and attention to detail.</p>
+                <p>From cool ocean blues to icy crystal designs, each tumbler is a one-of-a-kind work of art. Our tumblers are double-walled, vacuum-insulated, and built to keep your drinks perfectly chilled.</p>
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-icon">&#x1F4A7;</span>
+                        <h3>Stay Cool</h3>
+                        <p>Double-walled insulation</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">&#x1F30A;</span>
+                        <h3>Unique Designs</h3>
+                        <p>Handcrafted with care</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">&#x2744;&#xFE0F;</span>
+                        <h3>Ice Cold</h3>
+                        <p>Keeps drinks chilled for hours</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="subtitle">Ready to make a splash with your order?</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">&#x1F4E7;</span>
+                    <h3>Email</h3>
+                    <p><a href="mailto:tubbystumblerz@gmail.com" style="color:white;text-decoration:none;">tubbystumblerz@gmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">&#x1F6D2;</span>
+                    <h3>Etsy Shop</h3>
+                    <p><a href="https://www.etsy.com/shop/TubbysTumblerz" target="_blank" rel="noopener" style="color:white;text-decoration:none;">TubbysTumblerz</a></p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">&#x1F4CD;</span>
+                    <h3>Location</h3>
+                    <p>Based in USA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://x.com/tubbystumblerz" class="social-link" target="_blank" rel="noopener" aria-label="X / Twitter">
+                    <span class="social-icon">&#x1D54F;</span>
+                </a>
+                <a href="https://tiktok.com/@tubbystumblerz" class="social-link" target="_blank" rel="noopener" aria-label="TikTok">
+                    <span class="social-icon">&#x1F4F1;</span>
+                </a>
+                <a href="https://instagram.com/tubbystumblerz" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+                    <span class="social-icon">&#x1F4F7;</span>
+                </a>
+            </div>
+            <p>&copy; 2025 Tubby's Tumblerz. All rights reserved.</p>
+            <p>Made with &#x1F4A7; for tumbler lovers everywhere</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

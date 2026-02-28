@@ -1,0 +1,1019 @@
+/* ===================================
+   Tubby's Tumblerz - Styles
+   Water theme with dynamic Etsy integration
+   =================================== */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(180deg, #E0F6FF 0%, #B8E6FF 50%, #87CEEB 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===================================
+   Navigation
+   =================================== */
+.navbar {
+    background: linear-gradient(135deg, #0066CC 0%, #0099FF 100%);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 102, 204, 0.3);
+    height: 120px;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-img {
+    height: 150px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.1);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.nav-menu a:hover {
+    color: #B8E6FF;
+    transform: translateY(-2px);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0066CC 0%, #0099FF 50%, #00BFFF 100%);
+    position: relative;
+    overflow: hidden;
+    padding-top: 120px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+    animation: float 20s infinite linear;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(10px); }
+    100% { transform: translateY(0) translateX(0); }
+}
+
+.hero-content {
+    color: white;
+    max-width: 800px;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-logo {
+    height: 400px;
+    width: auto;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+    animation: logo-float 3s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+.hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #00BFFF 0%, #0099FF 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #00CED1 0%, #00BFFF 100%);
+}
+
+.wave-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 0;
+}
+
+.wave-bottom svg {
+    width: 100%;
+    height: auto;
+}
+
+/* ===================================
+   Inventory Section
+   =================================== */
+.inventory {
+    padding: 5rem 0;
+    background: white;
+}
+
+.inventory h2 {
+    text-align: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    color: #0066CC;
+    text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+
+.subtitle {
+    text-align: center;
+    color: #0099FF;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Loading State */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    gap: 1.5rem;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(0, 153, 255, 0.2);
+    border-top: 5px solid #0099FF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-state p {
+    color: #0099FF;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Error State */
+.error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    gap: 1rem;
+}
+
+.error-icon {
+    font-size: 3rem;
+    color: #FF6B6B;
+}
+
+.error-state p {
+    color: #666;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.error-detail {
+    font-size: 0.9rem !important;
+    color: #999 !important;
+    font-style: italic;
+}
+
+.etsy-fallback-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, #F1641E 0%, #D35400 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(241, 100, 30, 0.3);
+}
+
+.etsy-fallback-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(241, 100, 30, 0.4);
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Product Card (now <a> links) */
+.product-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: linear-gradient(145deg, #ffffff 0%, #f0f8ff 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(0, 153, 255, 0.1);
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 102, 204, 0.25);
+    border-color: rgba(0, 153, 255, 0.3);
+}
+
+.product-image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    background: #f0f8ff;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.water-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(to top, rgba(0, 153, 255, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .water-overlay {
+    opacity: 1;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-info h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #0066CC;
+    line-height: 1.4;
+}
+
+.description {
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    min-height: 40px;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0099FF;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.view-btn {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    background: linear-gradient(135deg, #F1641E 0%, #D35400 100%);
+    color: white;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(241, 100, 30, 0.3);
+}
+
+.product-card:hover .view-btn {
+    background: linear-gradient(135deg, #FF7B3D 0%, #F1641E 100%);
+    box-shadow: 0 4px 15px rgba(241, 100, 30, 0.4);
+}
+
+/* Shop Link Container */
+.shop-link-container {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+}
+
+.visit-shop-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #F1641E 0%, #D35400 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(241, 100, 30, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.visit-shop-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(241, 100, 30, 0.4);
+}
+
+.etsy-icon svg {
+    vertical-align: middle;
+}
+
+/* ===================================
+   About Section
+   =================================== */
+.about {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, #E0F6FF 0%, #B8E6FF 100%);
+}
+
+.about h2 {
+    text-align: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: #0066CC;
+    text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(0, 153, 255, 0.1);
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 102, 204, 0.2);
+}
+
+.feature-icon {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.feature h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #0066CC;
+}
+
+.feature p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* ===================================
+   Contact Section
+   =================================== */
+.contact {
+    padding: 5rem 0;
+    background: white;
+}
+
+.contact h2 {
+    text-align: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    color: #0066CC;
+    text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+
+.contact .subtitle {
+    margin-bottom: 3rem;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-item {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #0099FF 0%, #0066CC 100%);
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 102, 204, 0.4);
+}
+
+.contact-icon {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.contact-item h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-item p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+/* ===================================
+   Footer
+   =================================== */
+.footer {
+    background: linear-gradient(135deg, #003D7A 0%, #0066CC 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px) scale(1.1);
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+@media (max-width: 768px) {
+    /* Mobile menu */
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #0066CC 0%, #0099FF 100%);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+        display: block;
+        text-align: center;
+    }
+
+    .hero-logo {
+        height: 180px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .logo-img {
+        height: 80px;
+    }
+
+    .navbar {
+        height: 90px;
+    }
+
+    .hero {
+        padding-top: 90px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 300px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    .inventory h2,
+    .about h2,
+    .contact h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-logo {
+        height: 140px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .product-image {
+        height: 250px;
+    }
+
+    .product-info h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* ===================================
+   Custom Request Section
+   =================================== */
+.custom-request {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, #E8F4FD 0%, #D0ECFF 100%);
+}
+
+.custom-request h2 {
+    text-align: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    color: #0066CC;
+    text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+
+.custom-request .subtitle {
+    margin-bottom: 3rem;
+}
+
+.custom-request-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* Info Cards */
+.custom-request-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.custom-info-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.12);
+    border: 2px solid rgba(0, 153, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.custom-info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 102, 204, 0.18);
+}
+
+.custom-info-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.custom-info-card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.3rem;
+    color: #0066CC;
+    margin-bottom: 0.5rem;
+}
+
+.custom-info-card p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.custom-steps {
+    list-style: none;
+    counter-reset: step-counter;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-steps li {
+    counter-increment: step-counter;
+    padding: 0.5rem 0 0.5rem 2.5rem;
+    position: relative;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.custom-steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #00BFFF 0%, #0099FF 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 8px rgba(0, 153, 255, 0.3);
+}
+
+/* Form Wrapper */
+.custom-request-form-wrapper {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 35px rgba(0, 102, 204, 0.15);
+    border: 2px solid rgba(0, 153, 255, 0.1);
+}
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.hidden-field {
+    display: none;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-weight: 700;
+    color: #0066CC;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 0.8rem 1rem;
+    border: 2px solid rgba(0, 153, 255, 0.2);
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    background: #f8fcff;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #0099FF;
+    box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.15);
+    background: white;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+.form-hint {
+    font-size: 0.8rem;
+    color: #999;
+    font-style: italic;
+}
+
+.submit-btn {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #00BFFF 0%, #0099FF 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 153, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 153, 255, 0.4);
+    background: linear-gradient(135deg, #00CED1 0%, #00BFFF 100%);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Or Email Section */
+.or-email {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid rgba(0, 153, 255, 0.1);
+    text-align: center;
+}
+
+.or-email p {
+    color: #999;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #0099FF;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.email-link:hover {
+    color: #0066CC;
+    transform: translateY(-2px);
+}
+
+/* Custom Request Responsive */
+@media (max-width: 768px) {
+    .custom-request-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .custom-request-form-wrapper {
+        padding: 1.5rem;
+    }
+
+    .custom-request h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Form Success State */
+.form-success {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.success-icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.form-success h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    color: #0066CC;
+    margin-bottom: 1rem;
+}
+
+.form-success p {
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+}
+
+.success-email a {
+    color: #0099FF;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.success-email a:hover {
+    text-decoration: underline;
+}
+
+/* Small spinner for submit button */
+.spinner-small {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+}
