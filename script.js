@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const API_ENDPOINT = "/.netlify/functions/etsy";
+  const API_ENDPOINT = "/etsy";
   const ETSY_SHOP_URL = "https://www.etsy.com/shop/TubbysTumblerz";
 
   // DOM Elements
