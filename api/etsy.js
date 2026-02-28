@@ -15,8 +15,9 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Try direct key:secret format first
     const authHeaders = {
-      "Authorization": `Bearer ${ETSY_API_KEY}`,
+      "Authorization": `Basic ${Buffer.from(ETSY_API_KEY).toString('base64')}`,
       "Accept": "application/json"
     };
 
