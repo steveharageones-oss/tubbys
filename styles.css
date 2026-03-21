@@ -300,7 +300,8 @@ header {
 .product-image {
     width: 100%;
     aspect-ratio: 1 / 1;
-    object-fit: cover;
+    object-fit: contain; /* Prevents cropping, fits the whole image inside */
+    background-color: var(--accent); /* Soft icy blue background for any empty space */
     border-radius: 15px;
     margin-bottom: 15px;
 }
