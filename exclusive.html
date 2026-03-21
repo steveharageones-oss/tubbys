@@ -29,25 +29,8 @@
 
         <section class="shop-section">
             <div class="container">
-                <div class="product-grid">
-                    <!-- Placeholder exclusive items (can be manually edited by user later) -->
-                    <div class="product-card">
-                        <div style="width:100%; aspect-ratio: 1/1; background-color: #eee; border-radius: 15px; display:flex; align-items:center; justify-content:center; margin-bottom: 15px;">
-                            <span style="color:#aaa;">[Your Image Here]</span>
-                        </div>
-                        <h3>Special Theme Tumbler #1</h3>
-                        <p class="price">$25.00</p>
-                        <a href="index.html#custom-request" class="btn outline-btn">Request This</a>
-                    </div>
-
-                    <div class="product-card">
-                        <div style="width:100%; aspect-ratio: 1/1; background-color: #eee; border-radius: 15px; display:flex; align-items:center; justify-content:center; margin-bottom: 15px;">
-                            <span style="color:#aaa;">[Your Image Here]</span>
-                        </div>
-                        <h3>Special Theme Tumbler #2</h3>
-                        <p class="price">$25.00</p>
-                        <a href="index.html#custom-request" class="btn outline-btn">Request This</a>
-                    </div>
+                <div id="exclusive-products" class="product-grid">
+                    <p class="loading" style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">Fetching the latest exclusives...</p>
                 </div>
             </div>
         </section>
@@ -58,5 +41,7 @@
             <p>&copy; 2024 Tubby's Tumblerz. Made with 💖</p>
         </div>
     </footer>
+    
+    <script src="exclusive.js"></script>
 </body>
 </html>
