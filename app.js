@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DYNAMIC AD FROM GOOGLE SHEETS ---
     const adImg = document.getElementById('dynamic-ad-img');
     const sheetId = '1tU05kkuOz2t3c7A4s_FeUIhn0P2oUHAPa-KX_jyFJw0';
-    // Look specifically for a tab named 'Ads'
     const adUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=Ads`;
 
     if (adImg) {
@@ -63,16 +62,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 const jsonString = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
                 const data = JSON.parse(jsonString);
                 if (data.table && data.table.rows && data.table.rows.length > 0) {
-                    // Look at the first row, first column for the link
-                    let link = null;
-                    if (data.table.rows[0].c[0] && data.table.rows[0].c[0].v) {
-                        link = data.table.rows[0].c[0].v;
-                    }
-                    // Ensure it's not the header itself
-                    if (link && !link.toLowerCase().includes('ad link')) {
-                        adImg.src = link;
+                    let validLinks = [];
+
+                    // Collect all valid image links from the Ads sheet
+                    data.table.rows.forEach(row => {
+                        if (row.c && row.c[0] && row.c[0].v) {
+                            const link = row.c[0].v;
+                            if (!link.toLowerCase().includes('ad link') && link.startsWith('http')) {
+                                validLinks.push(link);
+                            }
+                        }
+                    });
+
+                    if (validLinks.length > 0) {
+                        let currentIndex = 0;
+                        adImg.src = validLinks[currentIndex]; // Set the first image immediately
+
+                        // If there is more than 1 ad, start the slideshow loop
+                        if (validLinks.length > 1) {
+                            // Preload images into browser memory so transitions are smooth
+                            validLinks.forEach(url => { const img = new Image(); img.src = url; });
+
+                            setInterval(() => {
+                                adImg.classList.add('fade'); // Start fade out
+                                setTimeout(() => {
+                                    currentIndex = (currentIndex + 1) % validLinks.length;
+                                    adImg.src = validLinks[currentIndex]; // Swap image
+                                    adImg.classList.remove('fade'); // Fade back in
+                                }, 500); // 500ms matches the CSS transition time
+                            }, 5000); // Switch every 5 seconds
+                        }
                     }
                 }
             })
-            .catch(err => console.log('No Ads tab found yet, keeping placeholder.'));
+            .catch(err => console.log('No Ads tab found yet.'));
     }
+});

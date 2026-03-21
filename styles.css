@@ -93,18 +93,21 @@ header {
 
 .promo-img {
     width: 100%;
-    max-width: 320px;
-    aspect-ratio: 4/5;
-    border-radius: 40px;
+    max-width: 350px;
+    height: auto; /* Ensures no cropping! */
+    border-radius: 20px;
     box-shadow: 0 20px 50px rgba(0, 90, 156, 0.25);
-    object-fit: cover;
     border: 6px solid rgba(255,255,255,0.8);
     transform: rotate(2deg);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.5s ease;
 }
 
 .promo-img:hover {
     transform: rotate(0deg) scale(1.02);
+}
+
+.promo-img.fade {
+    opacity: 0.01;
 }
 
 .hero-logo {
@@ -160,8 +163,15 @@ header {
         justify-content: center;
     }
     .promo-img {
-        transform: rotate(0deg);
-    }
+    width: 100%;
+    max-width: 350px;
+    height: auto; /* Adapts to the image natural height, preventing cropping! */
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 90, 156, 0.25);
+    border: 6px solid rgba(255,255,255,0.8);
+    transform: rotate(2deg);
+    transition: transform 0.3s ease;
+}
 }
 
 /* Page Header (for exclusive page) */
