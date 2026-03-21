@@ -1,6 +1,12 @@
 {
   "version": 2,
   "name": "tubbys-tumblerz",
+  "routes": [
+    { "src": "/etsy", "dest": "/api/etsy.js" }
+  ],
+  "build": {
+    "env": { "NODE_VERSION": "18" }
+  },
   "functions": {
     "api/**/*.js": {
       "runtime": "nodejs18.x"
