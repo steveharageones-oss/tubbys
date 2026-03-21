@@ -65,22 +65,53 @@ header {
     transform: translateY(-2px);
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section & Split Layout --- */
 .hero {
     padding: 60px 0 80px;
-    text-align: center;
-    /* Replaced pink/yellow gradient with icy blue waves gradient */
     background: linear-gradient(135deg, #E0Fbfc 0%, #90E0EF66 100%);
     border-bottom-left-radius: 50% 5%;
     border-bottom-right-radius: 50% 5%;
     margin-bottom: 40px;
 }
 
+.hero-split {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.hero-content {
+    flex: 1.2;
+    text-align: left;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.promo-img {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 4/5;
+    border-radius: 40px;
+    box-shadow: 0 20px 50px rgba(0, 90, 156, 0.25);
+    object-fit: cover;
+    border: 6px solid rgba(255,255,255,0.8);
+    transform: rotate(2deg);
+    transition: transform 0.3s ease;
+}
+
+.promo-img:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
 .hero-logo {
     max-width: 350px;
     width: 100%;
     height: auto;
-    margin: 0 auto 20px;
+    margin: 0 0 20px 0;
     display: block;
     filter: drop-shadow(0 15px 25px rgba(0,90,156,0.25));
     animation: float 4s ease-in-out infinite;
@@ -110,7 +141,27 @@ header {
 .hero-buttons {
     display: flex;
     gap: 15px;
-    justify-content: center;
+    justify-content: flex-start;
+}
+
+/* Mobile responsive for hero */
+@media (max-width: 900px) {
+    .hero-split {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .hero-logo {
+        margin: 0 auto 20px;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    .promo-img {
+        transform: rotate(0deg);
+    }
 }
 
 /* Page Header (for exclusive page) */
@@ -163,8 +214,9 @@ header {
 
 /* --- Shop Section & Product Cards --- */
 .shop-section {
-    padding: 60px 0;
+    padding: 40px 0 80px;
     text-align: center;
+    overflow: hidden;
 }
 
 .shop-section h2 {
@@ -176,13 +228,37 @@ header {
     color: var(--text-dark);
     opacity: 0.6;
     font-weight: 600;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
+/* Grid for Exclusive Page */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+}
+
+/* Horizontal Carousel for Etsy */
+.product-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding: 20px 10px 40px 10px; /* Padding for shadow overflow */
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.product-carousel::-webkit-scrollbar {
+    height: 12px;
+}
+.product-carousel::-webkit-scrollbar-track {
+    background: #e0fbfc;
+    border-radius: 10px;
+}
+.product-carousel::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+    border-radius: 10px;
 }
 
 .product-card {
@@ -195,6 +271,14 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Force card width inside carousel */
+.product-carousel .product-card {
+    min-width: 300px;
+    max-width: 300px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
 }
 
 .product-card:hover {
@@ -231,6 +315,7 @@ header {
     border: 2px solid var(--primary);
     width: 100%;
     border-radius: 50px;
+    margin-top: auto;
 }
 
 .outline-btn:hover {

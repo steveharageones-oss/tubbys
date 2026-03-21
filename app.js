@@ -49,3 +49,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadProducts();
 });
+
+    // --- DYNAMIC AD FROM GOOGLE SHEETS ---
+    const adImg = document.getElementById('dynamic-ad-img');
+    const sheetId = '1tU05kkuOz2t3c7A4s_FeUIhn0P2oUHAPa-KX_jyFJw0';
+    // Look specifically for a tab named 'Ads'
+    const adUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=Ads`;
+
+    if (adImg) {
+        fetch(adUrl)
+            .then(res => res.text())
+            .then(text => {
+                const jsonString = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
+                const data = JSON.parse(jsonString);
+                if (data.table && data.table.rows && data.table.rows.length > 0) {
+                    // Look at the first row, first column for the link
+                    let link = null;
+                    if (data.table.rows[0].c[0] && data.table.rows[0].c[0].v) {
+                        link = data.table.rows[0].c[0].v;
+                    }
+                    // Ensure it's not the header itself
+                    if (link && !link.toLowerCase().includes('ad link')) {
+                        adImg.src = link;
+                    }
+                }
+            })
+            .catch(err => console.log('No Ads tab found yet, keeping placeholder.'));
+    }

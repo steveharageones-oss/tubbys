@@ -22,13 +22,19 @@
 
     <main>
         <section id="home" class="hero">
-            <div class="container">
-                <img src="logo.png" alt="Tubby's Tumblerz Logo" class="hero-logo">
-                <h1>Handcrafted Tumblerz & Topperz for Any Occasion!</h1>
-                <p>100% custom made just for you. Bring your wildest ideas to life!</p>
-                <div class="hero-buttons">
-                    <a href="#shop" class="btn btn-primary">Shop Etsy</a>
-                    <a href="exclusive.html" class="btn btn-secondary">View Exclusives</a>
+            <div class="container hero-split">
+                <div class="hero-content">
+                    <img src="logo.png" alt="Tubby's Tumblerz Logo" class="hero-logo">
+                    <h1>Handcrafted Tumblerz & Topperz for Any Occasion!</h1>
+                    <p>100% custom made just for you. Bring your wildest ideas to life!</p>
+                    <div class="hero-buttons">
+                        <a href="#shop" class="btn btn-primary">Shop Etsy</a>
+                        <a href="exclusive.html" class="btn btn-secondary">View Exclusives</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- Placeholder for the AI model image! Once you generate it, put the link here! -->
+                    <img src="https://via.placeholder.com/800x1000/90E0EF/005A9C?text=Your+Model+Ad+Image+Here" alt="Model holding tumbler" id="dynamic-ad-img" class="promo-img">
                 </div>
             </div>
         </section>
@@ -36,8 +42,9 @@
         <section id="shop" class="shop-section">
             <div class="container">
                 <h2>Our Etsy Collection</h2>
-                <p class="subtitle">Ready-to-ship and customizable designs from our shop!</p>
-                <div id="etsy-products" class="product-grid">
+                <p class="subtitle">Swipe to view our ready-to-ship designs directly from Etsy!</p>
+                <!-- Changed from product-grid to product-carousel for a horizontal scroll -->
+                <div id="etsy-products" class="product-carousel">
                     <p class="loading">Loading latest creations...</p>
                 </div>
             </div>
@@ -49,7 +56,6 @@
                     <h2>✨ Request a Custom Design ✨</h2>
                     <p>Have an idea that isn't in the shop? Want a specific theme or character? Let's make it happen!</p>
                     
-                    <!-- Using a mailto action for simplicity without a backend database -->
                     <form action="https://formspree.io/f/mzdjqzgg" method="POST" class="request-form">
                         <input type="text" name="Name" placeholder="Your Name" required>
                         <input type="email" name="Email" placeholder="Your Email" required>
