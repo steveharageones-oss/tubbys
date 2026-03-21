@@ -1,3 +1,4 @@
+// Fetch products from our secure Vercel API, which talks to Etsy
 document.addEventListener('DOMContentLoaded', () => {
     const productsContainer = document.getElementById('etsy-products');
     
@@ -15,25 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 productsContainer.innerHTML = '<p>No products found right now. Check back soon!</p>';
                 return;
             }
-
-            // --- DIAGNOSTIC TOOL --- 
-            // We will print the exact raw JSON of the very first product to the screen so we can see where Etsy is putting the images.
-            const firstProduct = data.results[0];
-            const debugBox = document.createElement('div');
-            debugBox.style.backgroundColor = '#111';
-            debugBox.style.color = '#0f0';
-            debugBox.style.padding = '15px';
-            debugBox.style.marginBottom = '30px';
-            debugBox.style.borderRadius = '5px';
-            debugBox.style.textAlign = 'left';
-            debugBox.style.fontSize = '12px';
-            debugBox.style.fontFamily = 'monospace';
-            debugBox.style.overflowX = 'auto';
-            debugBox.innerHTML = `<strong>Diagnostic Data (Please copy & paste this to Agent Zero):</strong><br><br>${JSON.stringify(firstProduct, null, 2).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;')}`;
-            
-            // Insert diagnostic box before the products
-            productsContainer.parentNode.insertBefore(debugBox, productsContainer);
-            // -----------------------
 
             productsContainer.innerHTML = '';
 
