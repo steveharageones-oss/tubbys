@@ -25,10 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 
-                // Get the first image, or use a placeholder if none exists
-                const imageUrl = product.images && product.images.length > 0 
-                    ? product.images[0].url_570xN 
-                    : 'https://via.placeholder.com/300x300?text=No+Image';
+                // Etsy API sometimes returns 'Images' (capital I) instead of 'images' 
+                const imageArray = product.images || product.Images;
+                
+                // Start with a placeholder
+                let imageUrl = 'https://via.placeholder.com/300x300?text=No+Image';
+
+                // If we found the image array, try to get the best URL available
+                if (imageArray && imageArray.length > 0) {
+                    const imgObj = imageArray[0];
+                    imageUrl = imgObj.url_570xN || imgObj.url_fullxfull || imgObj.url_170x135 || imageUrl;
+                }
 
                 // Format the price
                 const price = product.price ? (product.price.amount / product.price.divisor).toFixed(2) : '0.00';
@@ -40,6 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <a href="${product.url}" target="_blank" class="btn outline-btn">View on Etsy</a>
                 `;
                 productsContainer.appendChild(productCard);
+                
+                // Background debug logging just in case
+                console.log(`Loaded: ${product.title.substring(0, 20)}...`, { hasImages: !!imageArray });
             });
         } catch (error) {
             console.error('Error loading products:', error);
