@@ -8,16 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             
             if (data.error) {
-                productsContainer.innerHTML = `<p style="color: red;">Setup required: ${data.error}</p>`;
+                if (productsContainer) productsContainer.innerHTML = `<p style="color: red;">Setup required: ${data.error}</p>`;
                 return;
             }
 
             if (!data.results || data.results.length === 0) {
-                productsContainer.innerHTML = '<p>No products found right now. Check back soon!</p>';
+                if (productsContainer) productsContainer.innerHTML = '<p>No products found right now. Check back soon!</p>';
                 return;
             }
 
-            productsContainer.innerHTML = '';
+            if (productsContainer) productsContainer.innerHTML = '';
 
             data.results.forEach(product => {
                 const productCard = document.createElement('div');
@@ -39,16 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="price">$${price}</p>
                     <a href="${product.url}" target="_blank" class="btn outline-btn">View on Etsy</a>
                 `;
-                productsContainer.appendChild(productCard);
+                if (productsContainer) productsContainer.appendChild(productCard);
             });
         } catch (error) {
             console.error('Error loading products:', error);
-            productsContainer.innerHTML = '<p>Failed to load products. Please try again later.</p>';
+            if (productsContainer) productsContainer.innerHTML = '<p>Failed to load products. Please try again later.</p>';
         }
     }
 
-    loadProducts();
-});
+    if (productsContainer) {
+        loadProducts();
+    }
 
     // --- DYNAMIC AD FROM GOOGLE SHEETS ---
     const adImg = document.getElementById('dynamic-ad-img');
