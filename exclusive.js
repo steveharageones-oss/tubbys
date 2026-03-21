@@ -63,3 +63,36 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.innerHTML = '<p style="color: red;">Failed to load inventory. Make sure the Google Sheet is public!</p>';
         });
 });
+
+// --- Lightbox Modal Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.querySelector('#exclusive-products');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModal = document.querySelector('.close-modal');
+
+    if (grid && modal && modalImg && closeModal) {
+        // Event delegation for dynamically loaded images
+        grid.addEventListener('click', function(e) {
+            if (e.target.classList.contains('product-image')) {
+                modal.style.display = 'block';
+                setTimeout(() => modal.classList.add('show'), 10);
+                modalImg.src = e.target.src;
+            }
+        });
+
+        const hideModal = () => {
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 300);
+        };
+
+        closeModal.addEventListener('click', hideModal);
+
+        // Close if clicked on the dark background
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
+    }
+});

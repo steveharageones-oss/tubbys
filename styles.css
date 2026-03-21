@@ -398,3 +398,56 @@ footer {
     font-weight: 700;
     margin-top: auto;
 }
+
+/* --- Modal / Lightbox --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 80px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 180, 216, 0.4);
+    border: 4px solid var(--accent);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+.modal.show .modal-content {
+    transform: scale(1);
+}
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.close-modal:hover,
+.close-modal:focus {
+    color: var(--secondary);
+    text-decoration: none;
+}
+.product-image {
+    cursor: pointer; /* Show pointer to indicate it can be clicked */
+}
