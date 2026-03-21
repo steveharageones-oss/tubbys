@@ -1,4 +1,3 @@
-// Fetch products from our secure Vercel API, which talks to Etsy
 document.addEventListener('DOMContentLoaded', () => {
     const productsContainer = document.getElementById('etsy-products');
     
@@ -17,27 +16,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Clear the "Loading..." text
+            // --- DIAGNOSTIC TOOL --- 
+            // We will print the exact raw JSON of the very first product to the screen so we can see where Etsy is putting the images.
+            const firstProduct = data.results[0];
+            const debugBox = document.createElement('div');
+            debugBox.style.backgroundColor = '#111';
+            debugBox.style.color = '#0f0';
+            debugBox.style.padding = '15px';
+            debugBox.style.marginBottom = '30px';
+            debugBox.style.borderRadius = '5px';
+            debugBox.style.textAlign = 'left';
+            debugBox.style.fontSize = '12px';
+            debugBox.style.fontFamily = 'monospace';
+            debugBox.style.overflowX = 'auto';
+            debugBox.innerHTML = `<strong>Diagnostic Data (Please copy & paste this to Agent Zero):</strong><br><br>${JSON.stringify(firstProduct, null, 2).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;')}`;
+            
+            // Insert diagnostic box before the products
+            productsContainer.parentNode.insertBefore(debugBox, productsContainer);
+            // -----------------------
+
             productsContainer.innerHTML = '';
 
-            // Loop through the results and create a card for each product
             data.results.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 
-                // Etsy API sometimes returns 'Images' (capital I) instead of 'images' 
                 const imageArray = product.images || product.Images;
-                
-                // Start with a placeholder
                 let imageUrl = 'https://via.placeholder.com/300x300?text=No+Image';
 
-                // If we found the image array, try to get the best URL available
                 if (imageArray && imageArray.length > 0) {
                     const imgObj = imageArray[0];
                     imageUrl = imgObj.url_570xN || imgObj.url_fullxfull || imgObj.url_170x135 || imageUrl;
                 }
 
-                // Format the price
                 const price = product.price ? (product.price.amount / product.price.divisor).toFixed(2) : '0.00';
 
                 productCard.innerHTML = `
@@ -47,9 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <a href="${product.url}" target="_blank" class="btn outline-btn">View on Etsy</a>
                 `;
                 productsContainer.appendChild(productCard);
-                
-                // Background debug logging just in case
-                console.log(`Loaded: ${product.title.substring(0, 20)}...`, { hasImages: !!imageArray });
             });
         } catch (error) {
             console.error('Error loading products:', error);
