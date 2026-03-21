@@ -1,10 +1,10 @@
-/* --- FUN & COLORFUL THEME --- */
+/* --- FUN & SPLASHY WATER THEME --- */
 :root {
-    --primary: #ff5277;    /* Vibrant hot pink */
-    --secondary: #00d2d3;  /* Bright teal */
-    --accent: #ffda79;     /* Sunny yellow */
-    --bg-light: #fffdfd;   /* Soft warm white background */
-    --text-dark: #2d3436;  /* Soft black for readability */
+    --primary: #005A9C;    /* Deep water blue (from logo text outline) */
+    --secondary: #00B4D8;  /* Bright splash cyan (from water effects) */
+    --accent: #90E0EF;     /* Light icy blue */
+    --bg-light: #F4FAFF;   /* Very soft cool white background */
+    --text-dark: #001F3F;  /* Deep navy for readability */
 }
 
 * {
@@ -69,7 +69,8 @@ header {
 .hero {
     padding: 60px 0 80px;
     text-align: center;
-    background: linear-gradient(135deg, #ffda7933 0%, #ff527733 100%);
+    /* Replaced pink/yellow gradient with icy blue waves gradient */
+    background: linear-gradient(135deg, #E0Fbfc 0%, #90E0EF66 100%);
     border-bottom-left-radius: 50% 5%;
     border-bottom-right-radius: 50% 5%;
     margin-bottom: 40px;
@@ -81,7 +82,7 @@ header {
     height: auto;
     margin: 0 auto 20px;
     display: block;
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 15px 25px rgba(0,90,156,0.25));
     animation: float 4s ease-in-out infinite;
 }
 
@@ -101,7 +102,8 @@ header {
 .hero p {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #4a4a4a;
+    color: var(--text-dark);
+    opacity: 0.8;
     margin-bottom: 30px;
 }
 
@@ -135,23 +137,23 @@ header {
 .btn-primary {
     background-color: var(--primary);
     color: white;
-    box-shadow: 0 6px 15px rgba(255, 82, 119, 0.4);
+    box-shadow: 0 6px 15px rgba(0, 90, 156, 0.4);
 }
 
 .btn-primary:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 10px 20px rgba(255, 82, 119, 0.6);
+    box-shadow: 0 10px 20px rgba(0, 90, 156, 0.6);
 }
 
 .btn-secondary {
     background-color: var(--secondary);
     color: white;
-    box-shadow: 0 6px 15px rgba(0, 210, 211, 0.4);
+    box-shadow: 0 6px 15px rgba(0, 180, 216, 0.4);
 }
 
 .btn-secondary:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 210, 211, 0.6);
+    box-shadow: 0 10px 20px rgba(0, 180, 216, 0.6);
 }
 
 .btn-large {
@@ -171,7 +173,8 @@ header {
 }
 
 .subtitle {
-    color: #888;
+    color: var(--text-dark);
+    opacity: 0.6;
     font-weight: 600;
     margin-bottom: 40px;
 }
@@ -197,7 +200,7 @@ header {
 .product-card:hover {
     transform: translateY(-10px);
     border-color: var(--accent);
-    box-shadow: 0 15px 35px rgba(255, 218, 121, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 180, 216, 0.2);
 }
 
 .product-image {
@@ -238,7 +241,7 @@ header {
 /* --- Custom Request Form --- */
 .custom-section {
     padding: 80px 0;
-    background-color: #f0f7ff;
+    background-color: #E0FBFC;
     background-image: radial-gradient(var(--accent) 2px, transparent 2px);
     background-size: 30px 30px;
 }
@@ -249,7 +252,7 @@ header {
     margin: 0 auto;
     padding: 50px;
     border-radius: 30px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 40px rgba(0,90,156,0.1);
     text-align: center;
     border-top: 10px solid var(--secondary);
 }
@@ -262,7 +265,8 @@ header {
 .form-wrapper p {
     margin-bottom: 30px;
     font-weight: 600;
-    color: #666;
+    color: var(--text-dark);
+    opacity: 0.7;
 }
 
 .request-form {
