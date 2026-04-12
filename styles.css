@@ -451,3 +451,68 @@ footer {
 .product-image {
     cursor: pointer; /* Show pointer to indicate it can be clicked */
 }
+
+/* --- Compact Thumbnail Grid (Exclusive Page) --- */
+#exclusive-products.product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+}
+#exclusive-products .product-card {
+    padding: 8px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#exclusive-products .product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+#exclusive-products .product-card h3,
+#exclusive-products .product-card .price,
+#exclusive-products .product-card .btn {
+    display: none;
+}
+#exclusive-products .product-image {
+    margin-bottom: 0;
+    border-radius: 8px;
+    aspect-ratio: 1 / 1;
+}
+
+/* --- Enhanced Modal Details --- */
+.modal-details {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    margin: 5% auto;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+.modal-details img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background-color: var(--accent);
+}
+.modal-details h2 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+.modal-details .modal-price {
+    font-size: 1.8rem;
+    color: var(--secondary);
+    font-weight: 700;
+    margin-bottom: 25px;
+    font-family: 'Baloo 2', cursive;
+}
+.modal-details .btn {
+    display: inline-block;
+    width: auto;
+    padding: 12px 40px;
+}
+}
