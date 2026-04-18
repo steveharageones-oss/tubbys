@@ -478,12 +478,40 @@ footer {
     aspect-ratio: 1 / 1;
 }
 
-/* --- Enhanced Modal Details --- */
+/* --- Category Tabs --- */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+.tab-btn {
+    padding: 10px 24px;
+    border: 2px solid var(--primary);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--primary);
+    font-family: 'Baloo 2', cursive;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.tab-btn:hover {
+    background: var(--accent);
+    border-color: var(--secondary);
+}
+.tab-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
 .modal-details {
     background: white;
     padding: 30px;
     border-radius: 20px;
-    max-width: 500px;
+    max-width: 650px;
     width: 90%;
     margin: 5% auto;
     position: relative;
@@ -492,7 +520,8 @@ footer {
 }
 .modal-details img {
     width: 100%;
-    max-height: 400px;
+    max-width: 550px;
+    max-height: 70vh;
     object-fit: contain;
     border-radius: 12px;
     margin-bottom: 20px;
@@ -514,5 +543,4 @@ footer {
     display: inline-block;
     width: auto;
     padding: 12px 40px;
-}
 }
