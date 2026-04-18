@@ -544,3 +544,20 @@ footer {
     width: auto;
     padding: 12px 40px;
 }
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.modal-buttons .btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+.modal-buttons .btn-primary:hover {
+    background-color: var(--secondary);
+}
+.modal-buttons .btn-primary:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}

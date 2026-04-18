@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sheetId = '1tU05kkuOz2t3c7A4s_FeUIhn0P2oUHAPa-KX_jyFJw0';
     const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
 
-    let allProducts = []; // Store all products for filtering
-    let activeCategory = 'all'; // Current filter
+    let activeCategory = 'all';
 
     // Category Tab Logic
     const tabs = document.querySelectorAll('.tab-btn');
@@ -56,8 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 else price = String(price).replace('$', '');
 
                 const image = colC && colC.v ? colC.v : 'https://via.placeholder.com/300x300?text=No+Image';
-
-                // Category from Column D, default to 'Tumblers' if missing
                 const category = colD && colD.v ? String(colD.v).trim() : 'Tumblers';
 
                 const card = document.createElement('div');
@@ -76,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 grid.appendChild(card);
             });
 
-            // Update tab counts after loading
             updateTabCounts();
         })
         .catch(err => {
@@ -105,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTitle = document.getElementById('modalTitle');
     const modalPrice = document.getElementById('modalPrice');
     const closeModal = document.querySelector('.close-modal');
+    const buyNowBtn = document.getElementById('buyNowBtn');
 
     if (grid && modal && modalImg && modalTitle && modalPrice && closeModal) {
         grid.addEventListener('click', function(e) {
@@ -114,6 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalImg.alt = card.dataset.name;
                 modalTitle.textContent = card.dataset.name;
                 modalPrice.textContent = '$' + card.dataset.price;
+
+                // Store product data for checkout
+                buyNowBtn.dataset.name = card.dataset.name;
+                buyNowBtn.dataset.price = card.dataset.price;
+                buyNowBtn.dataset.image = card.dataset.image;
                 
                 modal.style.display = 'block';
                 setTimeout(() => modal.classList.add('show'), 10);
@@ -130,9 +132,45 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === modal) hideModal();
         });
 
-        // Close on Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && modal.classList.contains('show')) hideModal();
+        });
+    }
+
+    // Stripe Checkout Logic
+    if (buyNowBtn) {
+        buyNowBtn.addEventListener('click', async function() {
+            const name = this.dataset.name;
+            const price = this.dataset.price;
+            const image = this.dataset.image;
+
+            // Disable button to prevent double clicks
+            buyNowBtn.disabled = true;
+            buyNowBtn.textContent = 'Processing...';
+
+            try {
+                const response = await fetch('/api/create-checkout-session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, price, image })
+                });
+
+                const data = await response.json();
+
+                if (data.url) {
+                    // Redirect to Stripe Checkout
+                    window.location = data.url;
+                } else {
+                    alert('Something went wrong. Please try again.');
+                    buyNowBtn.disabled = false;
+                    buyNowBtn.textContent = 'Buy Now';
+                }
+            } catch (error) {
+                console.error('Checkout error:', error);
+                alert('Unable to start checkout. Please try again.');
+                buyNowBtn.disabled = false;
+                buyNowBtn.textContent = 'Buy Now';
+            }
         });
     }
 });
