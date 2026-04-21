@@ -230,12 +230,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch products from Google Sheet
     fetch(url)
-        .then(res => res.text())
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('HTTP ' + res.status + ': ' + res.statusText);
+            }
+            return res.text();
+        })
         .then(text => {
+            if (!text || text.length < 10) {
+                throw new Error('Empty response from Google Sheets');
+            }
             const jsonString = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
-            const data = JSON.parse(jsonString);
+            let data;
+            try {
+                data = JSON.parse(jsonString);
+            } catch (parseErr) {
+                console.error('Parse error:', parseErr);
+                console.error('Raw response (first 200 chars):', text.substring(0, 200));
+                throw new Error('Failed to parse Google Sheets response');
+            }
 
-            const rows = data.table.rows;
+            const rows = data.table && data.table.rows;
             if (!rows || rows.length === 0) {
                 grid.innerHTML = '<p>No exclusive items right now. Check back soon!</p>';
                 return;
@@ -272,8 +287,11 @@ document.addEventListener('DOMContentLoaded', () => {
             applyFilters();
         })
         .catch(err => {
-            console.error('Error fetching Google Sheet:', err);
-            grid.innerHTML = '<p style="color: red;">Failed to load inventory. Make sure the Google Sheet is public!</p>';
+            console.error('Full error details:', err);
+            console.error('Error name:', err.name);
+            console.error('Error message:', err.message);
+            grid.innerHTML = '<div style="text-align:center;padding:40px;"><h3 style="color:var(--primary);">Could not load inventory</h3><p style="color:#666;">Error: ' + err.message + '</p><p style="color:#999;font-size:0.9em;">Check browser console (F12) for details.</p></div>';
+            if (noResults) noResults.style.display = 'none';
         });
 
     // Modal Logic

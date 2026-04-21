@@ -5,19 +5,11 @@
             "headers": [
                 {
                     "key": "Content-Security-Policy",
-                    "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live; connect-src 'self' https://docs.google.com https://*.postimg.cc https://api.stripe.com https://formspree.io; img-src 'self' data: https://*.postimg.cc https://via.placeholder.com https://*.googleusercontent.com https://*.googleapis.com https://i.etsystatic.com https://*.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; form-action 'self' https://formspree.io https://checkout.stripe.com; frame-src https://checkout.stripe.com https://js.stripe.com; worker-src 'self' blob:"
+                    "value": "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; style-src * 'unsafe-inline'; font-src * 'unsafe-inline'; form-action *; frame-src *; worker-src * blob:"
                 },
                 {
                     "key": "X-Content-Type-Options",
                     "value": "nosniff"
-                },
-                {
-                    "key": "X-Frame-Options",
-                    "value": "DENY"
-                },
-                {
-                    "key": "Referrer-Policy",
-                    "value": "strict-origin-when-cross-origin"
                 }
             ]
         }
