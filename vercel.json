@@ -1,19 +1,4 @@
 {
-    "headers": [
-        {
-            "source": "/(.*)",
-            "headers": [
-                {
-                    "key": "Content-Security-Policy",
-                    "value": "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; style-src * 'unsafe-inline'; font-src * 'unsafe-inline'; form-action *; frame-src *; worker-src * blob:"
-                },
-                {
-                    "key": "X-Content-Type-Options",
-                    "value": "nosniff"
-                }
-            ]
-        }
-    ],
     "rewrites": [
         { "source": "/api/create-checkout-session", "destination": "/api/create-checkout-session" },
         { "source": "/api/stripe-webhook", "destination": "/api/stripe-webhook" }

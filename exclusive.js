@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function buildThemeTabs(themes) {
         themeTabsContainer.innerHTML = '';
-        const sortedThemes = themes.sort();
+        const sortedThemes = [...themes].sort();
 
         // "All Themes" button
         const allBtn = document.createElement('button');
