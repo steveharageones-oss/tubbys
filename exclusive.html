@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exclusive Inventory | Tubby's Tumblerz</title>
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -29,40 +29,14 @@
 
         <section class="shop-section">
             <div class="container">
-                <!-- Search Bar -->
-                <div class="search-bar-wrapper">
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search tumblers...">
-                    <button id="searchClear" class="search-clear" title="Clear search">&times;</button>
-                </div>
-
-                <!-- Type Filter Tabs -->
                 <div class="category-tabs">
                     <button class="tab-btn active" data-category="all">All</button>
                     <button class="tab-btn" data-category="Tumblers">Tumblers</button>
                     <button class="tab-btn" data-category="Tumblers w/ Topper">Tumblers w/ Topper</button>
                 </div>
-
-                <!-- Theme Filter Tabs -->
-                <div class="theme-tabs">
-                    <button class="theme-btn active" data-theme="all">All Themes</button>
-                    <button class="theme-btn" data-theme="Movies & TV">Movies & TV</button>
-                    <button class="theme-btn" data-theme="Sports">Sports</button>
-                    <button class="theme-btn" data-theme="Gaming">Gaming</button>
-                    <button class="theme-btn" data-theme="Holiday">Holiday</button>
-                    <button class="theme-btn" data-theme="Characters">Characters</button>
+                <div id="exclusive-products" class="product-grid">
+                    <p class="loading" style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">Fetching the latest exclusives...</p>
                 </div>
-
-                <!-- Product Grid -->
-                <div id="exclusive-products" class="product-grid"></div>
-
-                <!-- No Results Message -->
-                <div id="noResults" class="no-results" style="display:none;">
-                    <h3>No tumblers found</h3>
-                    <p>Try a different search term or filter.</p>
-                </div>
-
-                <!-- Pagination -->
-                <div id="pagination" class="pagination"></div>
             </div>
         </section>
     </main>
@@ -87,6 +61,6 @@
         </div>
     </div>
 
-    <script src="exclusive.js?v=2"></script>
+    <script src="exclusive.js"></script>
 </body>
 </html>
