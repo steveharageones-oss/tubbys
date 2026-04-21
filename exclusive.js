@@ -41,7 +41,7 @@ function renderProducts(products) {
         const card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML = `
-            <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/400x400?text=No+Image'">
+            <img src="${p.image}" alt="${p.name}" class="product-image" loading="lazy" onerror="this.src='https://placehold.co/400x400?text=No+Image'">
             <h3>${p.name}</h3>
             <p class="product-price">$${parseFloat(p.price).toFixed(2)}</p>
             <span class="category-badge">${p.category}</span>
