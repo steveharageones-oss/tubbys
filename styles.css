@@ -454,7 +454,8 @@ footer {
 
 /* --- Compact Thumbnail Grid (Exclusive Page) --- */
 #exclusive-products.product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, 180px);
+    justify-content: center;
     gap: 15px;
 }
 #exclusive-products .product-card {
@@ -468,14 +469,18 @@ footer {
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 #exclusive-products .product-card h3,
+#exclusive-products .product-card .product-price,
 #exclusive-products .product-card .price,
-#exclusive-products .product-card .btn {
+#exclusive-products .product-card .btn,
+#exclusive-products .product-card .category-badge {
     display: none;
 }
 #exclusive-products .product-image {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
     margin-bottom: 0;
     border-radius: 8px;
-    aspect-ratio: 1 / 1;
 }
 
 /* --- Category Tabs --- */
