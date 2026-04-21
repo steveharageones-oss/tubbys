@@ -1,38 +1,239 @@
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('#exclusive-products');
+    const noResults = document.querySelector('#noResults');
+    const paginationEl = document.querySelector('#pagination');
+    const searchInput = document.querySelector('#searchInput');
+    const searchClear = document.querySelector('#searchClear');
     const sheetId = '1tU05kkuOz2t3c7A4s_FeUIhn0P2oUHAPa-KX_jyFJw0';
     const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
 
+    const ITEMS_PER_PAGE = 8;
+    let allProducts = [];
+    let filteredProducts = [];
+    let currentPage = 1;
     let activeCategory = 'all';
+    let activeTheme = 'all';
+    let searchQuery = '';
 
-    // Category Tab Logic
-    const tabs = document.querySelectorAll('.tab-btn');
-    tabs.forEach(tab => {
+    // Type Filter Tabs
+    const typeTabs = document.querySelectorAll('.tab-btn');
+    typeTabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
+            typeTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
             activeCategory = tab.dataset.category;
-            filterProducts();
+            currentPage = 1;
+            applyFilters();
         });
     });
 
-    function filterProducts() {
-        const cards = grid.querySelectorAll('.product-card');
-        cards.forEach(card => {
-            if (activeCategory === 'all' || card.dataset.category === activeCategory) {
-                card.style.display = '';
+    // Theme Filter Tabs (dynamically populated)
+    const themeTabsContainer = document.querySelector('.theme-tabs');
+
+    function buildThemeTabs(themes) {
+        themeTabsContainer.innerHTML = '';
+        const sortedThemes = themes.sort();
+
+        // "All Themes" button
+        const allBtn = document.createElement('button');
+        allBtn.className = 'theme-btn' + (activeTheme === 'all' ? ' active' : '');
+        allBtn.dataset.theme = 'all';
+        allBtn.textContent = 'All Themes';
+        allBtn.addEventListener('click', () => {
+            document.querySelectorAll('.theme-btn').forEach(t => t.classList.remove('active'));
+            allBtn.classList.add('active');
+            activeTheme = 'all';
+            currentPage = 1;
+            applyFilters();
+        });
+        themeTabsContainer.appendChild(allBtn);
+
+        sortedThemes.forEach(theme => {
+            const btn = document.createElement('button');
+            btn.className = 'theme-btn' + (activeTheme === theme ? ' active' : '');
+            btn.dataset.theme = theme;
+            btn.textContent = theme;
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.theme-btn').forEach(t => t.classList.remove('active'));
+                btn.classList.add('active');
+                activeTheme = theme;
+                currentPage = 1;
+                applyFilters();
+            });
+            themeTabsContainer.appendChild(btn);
+        });
+    }
+
+    // Search
+    searchInput.addEventListener('input', () => {
+        searchQuery = searchInput.value.trim().toLowerCase();
+        searchClear.style.display = searchQuery ? 'block' : 'none';
+        currentPage = 1;
+        applyFilters();
+    });
+
+    searchClear.addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        searchClear.style.display = 'none';
+        currentPage = 1;
+        applyFilters();
+    });
+
+    function applyFilters() {
+        filteredProducts = allProducts.filter(product => {
+            const matchCategory = activeCategory === 'all' || product.category === activeCategory;
+            const matchTheme = activeTheme === 'all' || product.themes.includes(activeTheme);
+            const matchSearch = !searchQuery || 
+                product.name.toLowerCase().includes(searchQuery) || 
+                product.category.toLowerCase().includes(searchQuery) ||
+                product.themes.some(t => t.toLowerCase().includes(searchQuery));
+            return matchCategory && matchTheme && matchSearch;
+        });
+
+        updateTabCounts();
+        renderProducts();
+        renderPagination();
+    }
+
+    function renderProducts() {
+        grid.innerHTML = '';
+
+        if (filteredProducts.length === 0) {
+            noResults.style.display = 'block';
+            paginationEl.style.display = 'none';
+            return;
+        }
+
+        noResults.style.display = 'none';
+        paginationEl.style.display = 'flex';
+
+        const start = (currentPage - 1) * ITEMS_PER_PAGE;
+        const end = start + ITEMS_PER_PAGE;
+        const pageProducts = filteredProducts.slice(start, end);
+
+        pageProducts.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.dataset.name = product.name;
+            card.dataset.price = product.price;
+            card.dataset.image = product.image;
+            card.dataset.category = product.category;
+
+            const primaryTheme = product.themes[0] || '';
+
+            card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+                <div class="product-info">
+                    <span class="product-theme">${primaryTheme}</span>
+                    <h3>${product.name}</h3>
+                    <p class="price">$${product.price}</p>
+                    <a href="index.html#custom-request" class="btn outline-btn">Request This</a>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    function renderPagination() {
+        paginationEl.innerHTML = '';
+
+        if (filteredProducts.length <= ITEMS_PER_PAGE) {
+            paginationEl.style.display = 'none';
+            return;
+        }
+
+        paginationEl.style.display = 'flex';
+        const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+
+        // Previous button
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'page-btn' + (currentPage === 1 ? ' disabled' : '');
+        prevBtn.innerHTML = '&laquo; Prev';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderProducts();
+                renderPagination();
+                scrollToGrid();
+            }
+        });
+        paginationEl.appendChild(prevBtn);
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = 'page-btn' + (i === currentPage ? ' active' : '');
+            pageBtn.textContent = i;
+            pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                renderProducts();
+                renderPagination();
+                scrollToGrid();
+            });
+            paginationEl.appendChild(pageBtn);
+        }
+
+        // Next button
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'page-btn' + (currentPage === totalPages ? ' disabled' : '');
+        nextBtn.innerHTML = 'Next &raquo;';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderProducts();
+                renderPagination();
+                scrollToGrid();
+            }
+        });
+        paginationEl.appendChild(nextBtn);
+    }
+
+    function scrollToGrid() {
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function updateTabCounts() {
+        const allCount = allProducts.length;
+        const tumblersCount = allProducts.filter(c => c.category === 'Tumblers').length;
+        const toppersCount = allProducts.filter(c => c.category === 'Tumblers w/ Topper').length;
+
+        typeTabs.forEach(tab => {
+            const cat = tab.dataset.category;
+            let count = allCount;
+            if (cat === 'Tumblers') count = tumblersCount;
+            else if (cat === 'Tumblers w/ Topper') count = toppersCount;
+            tab.textContent = tab.textContent.replace(/ \(\d+\)$/, '') + ` (${count})`;
+        });
+
+        // Theme counts based on current type filter
+        const themeCards = allProducts.filter(c => activeCategory === 'all' || c.category === activeCategory);
+        const themeCounts = {};
+        themeCards.forEach(c => {
+            c.themes.forEach(theme => {
+                themeCounts[theme] = (themeCounts[theme] || 0) + 1;
+            });
+        });
+
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            const theme = btn.dataset.theme;
+            if (theme === 'all') {
+                btn.textContent = 'All Themes';
             } else {
-                card.style.display = 'none';
+                const count = themeCounts[theme] || 0;
+                btn.textContent = btn.textContent.replace(/ \(\d+\)$/, '') + ` (${count})`;
             }
         });
     }
 
+    // Fetch products from Google Sheet
     fetch(url)
         .then(res => res.text())
         .then(text => {
             const jsonString = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
             const data = JSON.parse(jsonString);
-            grid.innerHTML = ''; 
 
             const rows = data.table.rows;
             if (!rows || rows.length === 0) {
@@ -40,13 +241,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            const allThemes = new Set();
+
             rows.forEach((row) => {
                 const colA = row.c[0]; // Name
                 const colB = row.c[1]; // Price
                 const colC = row.c[2]; // Image
                 const colD = row.c[3]; // Category
+                const colE = row.c[4]; // Theme (comma-separated)
 
-                if (!colA || !colA.v) return; 
+                if (!colA || !colA.v) return;
                 const name = colA.v;
                 if (String(name).toLowerCase() === 'name') return;
 
@@ -56,44 +260,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const image = colC && colC.v ? colC.v : 'https://via.placeholder.com/300x300?text=No+Image';
                 const category = colD && colD.v ? String(colD.v).trim() : 'Tumblers';
+                const themeStr = colE && colE.v ? String(colE.v).trim() : '';
+                const themes = themeStr ? themeStr.split(',').map(t => t.trim()).filter(t => t) : [];
 
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.dataset.name = name;
-                card.dataset.price = price;
-                card.dataset.image = image;
-                card.dataset.category = category;
-                
-                card.innerHTML = `
-                    <img src="${image}" alt="${name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-                    <h3>${name}</h3>
-                    <p class="price">$${price}</p>
-                    <a href="index.html#custom-request" class="btn outline-btn">Request This</a>
-                `;
-                grid.appendChild(card);
+                themes.forEach(t => allThemes.add(t));
+
+                allProducts.push({ name, price, image, category, themes });
             });
 
-            updateTabCounts();
+            buildThemeTabs(allThemes);
+            applyFilters();
         })
         .catch(err => {
             console.error('Error fetching Google Sheet:', err);
             grid.innerHTML = '<p style="color: red;">Failed to load inventory. Make sure the Google Sheet is public!</p>';
         });
-
-    function updateTabCounts() {
-        const cards = grid.querySelectorAll('.product-card');
-        const allCount = cards.length;
-        const tumblersCount = [...cards].filter(c => c.dataset.category === 'Tumblers').length;
-        const toppersCount = [...cards].filter(c => c.dataset.category === 'Tumblers w/ Topper').length;
-
-        tabs.forEach(tab => {
-            const cat = tab.dataset.category;
-            let count = allCount;
-            if (cat === 'Tumblers') count = tumblersCount;
-            else if (cat === 'Tumblers w/ Topper') count = toppersCount;
-            tab.textContent = tab.textContent.replace(/ \(\d+\)$/, '') + ` (${count})`;
-        });
-    }
 
     // Modal Logic
     const modal = document.getElementById('productModal');
@@ -112,11 +293,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalTitle.textContent = card.dataset.name;
                 modalPrice.textContent = '$' + card.dataset.price;
 
-                // Store product data for checkout
                 buyNowBtn.dataset.name = card.dataset.name;
                 buyNowBtn.dataset.price = card.dataset.price;
                 buyNowBtn.dataset.image = card.dataset.image;
-                
+
                 modal.style.display = 'block';
                 setTimeout(() => modal.classList.add('show'), 10);
             }
@@ -144,7 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const price = this.dataset.price;
             const image = this.dataset.image;
 
-            // Disable button to prevent double clicks
             buyNowBtn.disabled = true;
             buyNowBtn.textContent = 'Processing...';
 
@@ -158,7 +337,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
 
                 if (data.url) {
-                    // Redirect to Stripe Checkout
                     window.location = data.url;
                 } else {
                     alert('Something went wrong. Please try again.');
