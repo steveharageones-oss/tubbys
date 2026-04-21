@@ -73,16 +73,16 @@ function openModal(product) {
     document.getElementById('modalPrice').textContent = '$' + parseFloat(product.price).toFixed(2);
     const buyBtn = document.getElementById('buyNowBtn');
     buyBtn.onclick = () => checkout(product);
-    modal.style.display = 'flex';
+    modal.classList.add('show');
 }
 
 document.querySelector('.close-modal').addEventListener('click', () => {
-    document.getElementById('productModal').style.display = 'none';
+    document.getElementById('productModal').classList.remove('show');
 });
 
 window.addEventListener('click', e => {
     if (e.target === document.getElementById('productModal')) {
-        document.getElementById('productModal').style.display = 'none';
+        document.getElementById('productModal').classList.remove('show');
     }
 });
 
