@@ -1,12 +1,22 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/create-checkout-session",
-      "destination": "/api/create-checkout-session.js"
-    },
-    {
-      "source": "/api/etsy",
-      "destination": "/api/etsy.js"
-    }
-  ]
+  "version": 2,
+  "name": "tubbys-tumblerz",
+  "routes": [
+    { "src": "/api/create-checkout-session", "dest": "/api/create-checkout-session.js" },
+    { "src": "/api/chat", "dest": "/api/chat.js" },
+    { "src": "/api/generate-design", "dest": "/api/generate-design.js" },
+    { "src": "/etsy", "dest": "/api/etsy.js" }
+  ],
+  "build": { "env": { "NODE_VERSION": "18" } },
+  "functions": {
+    "api/**/*.js": { "runtime": "nodejs18.x" }
+  },
+  "headers": [{
+    "source": "(.*)",
+    "headers": [
+      { "key": "X-Frame-Options", "value": "DENY" },
+      { "key": "X-Content-Type-Options", "value": "nosniff" },
+      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+    ]
+  }]
 }

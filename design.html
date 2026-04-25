@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tubby's Tumblerz | Design Your Own</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container nav-bar">
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#shop">Etsy Shop</a>
+                <a href="exclusive.html">Exclusive Inventory</a>
+                <a href="design.html">Design Your Own</a>
+                <a href="index.html#custom-request">Custom Requests</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="design-hero">
+            <div class="container">
+                <h1>🎨 Design Your Own Tumbler</h1>
+                <p class="subtitle">Chat with our AI designer, generate a mockup, and we'll bring it to life!</p>
+                <p class="price-tag">Custom 20oz Tumbler — <strong>$25</strong></p>
+            </div>
+        </section>
+
+        <section class="design-workspace">
+            <div class="container design-layout">
+                <div class="chat-panel">
+                    <div class="chat-header">
+                        <span class="chat-avatar">🎨</span>
+                        <div>
+                            <h3>Tubby's AI Designer</h3>
+                            <span class="chat-status">Online</span>
+                        </div>
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message bot-message">
+                            <p>Hey there! I'm excited to help you design a unique 20oz tumbler. What theme or idea did you have in mind? 🎨</p>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="Describe your dream tumbler..." autocomplete="off">
+                        <button id="send-btn" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+
+                <div class="preview-panel">
+                    <div class="preview-header">
+                        <h3>Your Design</h3>
+                    </div>
+                    <div class="preview-area" id="preview-area">
+                        <div class="preview-placeholder">
+                            <span class="placeholder-icon">🖼️</span>
+                            <p>Your design preview will appear here after chatting with our AI designer.</p>
+                        </div>
+                    </div>
+                    <div class="preview-actions" id="preview-actions" style="display: none;">
+                        <button id="generate-btn" class="btn btn-secondary btn-large">
+                            <span class="btn-icon">✨</span> Generate Design
+                        </button>
+                        <div class="action-buttons" id="action-buttons" style="display: none;">
+                            <button id="redo-btn" class="btn btn-secondary">🔄 Redo</button>
+                            <button id="buy-btn" class="btn btn-primary btn-large">Buy This Design — $25</button>
+                        </div>
+                        <div class="loading-spinner" id="loading-spinner" style="display: none;">
+                            <div class="spinner"></div>
+                            <p>Creating your design... ✨</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tubby's Tumblerz. Made with 💖</p>
+        </div>
+    </footer>
+
+    <script src="design.js"></script>
+</body>
+</html>
