@@ -7,10 +7,6 @@
     { "src": "/api/generate-design", "dest": "/api/generate-design.js" },
     { "src": "/etsy", "dest": "/api/etsy.js" }
   ],
-  "build": { "env": { "NODE_VERSION": "18" } },
-  "functions": {
-    "api/**/*.js": { "runtime": "nodejs18.x" }
-  },
   "headers": [{
     "source": "(.*)",
     "headers": [
