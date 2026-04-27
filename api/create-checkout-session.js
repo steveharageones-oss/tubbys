@@ -39,6 +39,7 @@ export default async function handler(req, res) {
             mode: 'payment', // One-time payment, not subscription
             success_url: `${baseUrl}/success.html?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${baseUrl}/exclusive.html`,
+            shipping_options: [{ shipping_rate: 'shr_1TQcYsIymMPuSJvOAikUgFhe' }],
         });
 
         // Return the session URL so the frontend can redirect
