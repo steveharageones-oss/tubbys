@@ -3,8 +3,6 @@
   "name": "tubbys-tumblerz",
   "routes": [
     { "src": "/api/create-checkout-session", "dest": "/api/create-checkout-session.js" },
-    { "src": "/api/chat", "dest": "/api/chat.js" },
-    { "src": "/api/generate-design", "dest": "/api/generate-design.js" },
     { "src": "/etsy", "dest": "/api/etsy.js" }
   ],
   "headers": [{

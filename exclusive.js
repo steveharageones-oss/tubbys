@@ -52,13 +52,15 @@ function renderProducts(products) {
             </div>
             <h3>${p.name}</h3>
             <p class="product-price">$${parseFloat(p.price).toFixed(2)}</p>
-            <span class="category-badge">${p.category}</span>
         `;
         card.querySelector('.hover-buy-btn').addEventListener('click', (e) => {
             e.stopPropagation();
             checkout(p, e.currentTarget);
         });
-        card.addEventListener('click', () => openModal(p));
+        card.querySelector('.product-image-wrapper').addEventListener('click', (e) => {
+            if (e.target.closest('.hover-buy-btn')) return; // don't open modal from hover button
+            openModal(p);
+        });
         grid.appendChild(card);
     });
 }
