@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Inventory | Tubby's Tumblerz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container nav-bar">
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#shop">Etsy Shop</a>
+                <a href="exclusive.html">Exclusive Inventory</a>
+                <a href="design.html">Design Your Own</a>
+                <a href="index.html#custom-request">Custom Requests</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero page-header">
+            <div class="container">
+                <h1>Exclusive Inventory</h1>
+                <p>Special themes and requested designs that aren't available on our main shop!</p>
+            </div>
+        </section>
+
+        <section class="shop-section">
+            <div class="container">
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">All</button>
+                    <button class="tab-btn" data-category="Tumblers">Tumblers</button>
+                    <button class="tab-btn" data-category="Tumblers w/ Topper">Tumblers w/ Topper</button>
+                </div>
+                <div class="subcategory-filter">
+                    <label for="subcategory-dropdown">Theme:</label>
+                    <select id="subcategory-dropdown">
+                        <option value="">All Themes</option>
+                    </select>
+                </div>
+                <div id="exclusive-products" class="product-grid">
+                    <p class="loading" style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">Fetching the latest exclusives...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tubby's Tumblerz. Made with &#x1F496;</p>
+        </div>
+    </footer>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-details">
+            <span class="close-modal">&times;</span>
+            <img id="modalImg" src="" alt="">
+            <h2 id="modalTitle"></h2>
+            <p class="modal-price" id="modalPrice"></p>
+            <div class="modal-buttons">
+                <button id="buyNowBtn" class="btn btn-primary">Buy Now</button>
+                <a href="index.html#custom-request" class="btn outline-btn">Request Custom</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="exclusive.js"></script>
+</body>
+</html>
