@@ -40,6 +40,9 @@ export default async function handler(req, res) {
             success_url: `${baseUrl}/success.html?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${baseUrl}/exclusive.html`,
             shipping_options: [{ shipping_rate: 'shr_1TQcYsIymMPuSJvOAikUgFhe' }],
+            shipping_address_collection: {
+                allowed_countries: ['US'],
+            },
         });
 
         // Return the session URL so the frontend can redirect
