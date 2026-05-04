@@ -4,69 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exclusive Inventory | Tubby's Tumblerz</title>
-    <link rel="stylesheet" href="styles-v3.css">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="exclusive-redesign.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="container nav-bar">
-            <nav class="main-nav">
+
+    <!-- ── Header ─────────────────────────────────────────── -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="brand-logo">Tubby's Tumblerz</a>
+            <nav class="main-nav" aria-label="Main navigation">
                 <a href="index.html">Home</a>
                 <a href="index.html#shop">Etsy Shop</a>
-                <a href="exclusive.html">Exclusive Inventory</a>
+                <a href="exclusive.html" class="nav-active">Exclusive</a>
                 <a href="index.html#custom-request">Request Design</a>
             </nav>
+            <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
+    <!-- ── Mobile Nav Drawer ──────────────────────────────── -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <a href="index.html">Home</a>
+        <a href="index.html#shop">Etsy Shop</a>
+        <a href="exclusive.html">Exclusive</a>
+        <a href="index.html#custom-request">Request Design</a>
+    </div>
+
     <main>
-        <section class="hero page-header">
-            <div class="container">
-                <h1>Exclusive Inventory</h1>
-                <p>Special themes and requested designs that aren't available on our main shop!</p>
+
+        <!-- ── Hero Banner ────────────────────────────────── -->
+        <section class="page-hero" aria-labelledby="hero-title">
+            <div class="hero-bg-shape"></div>
+            <div class="hero-bg-shape hero-bg-shape--2"></div>
+            <div class="hero-content">
+                <span class="hero-eyebrow">Limited Collection</span>
+                <h1 id="hero-title">Exclusive Inventory</h1>
+                <p class="hero-sub">Special themes &amp; custom designs not available anywhere else.</p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">Handcrafted</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">Custom</span>
+                    <span class="stat-label">Made to Order</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">Exclusive</span>
+                    <span class="stat-label">Only Here</span>
+                </div>
             </div>
         </section>
 
-        <section class="shop-section">
-            <div class="container">
-                <div class="category-tabs">
-                    <button class="tab-btn active" data-category="all">All</button>
-                    <button class="tab-btn" data-category="Tumblers">Tumblers</button>
-                    <button class="tab-btn" data-category="Tumblers w/ Topper">Tumblers w/ Topper</button>
+        <!-- ── Shop Section ───────────────────────────────── -->
+        <section class="shop-section" aria-label="Shop exclusive products">
+            <div class="shop-container">
+
+                <!-- Filter Bar -->
+                <div class="filter-bar" role="group" aria-label="Product filters">
+                    <div class="filter-tabs" role="tablist">
+                        <button class="tab-btn active" data-category="all" role="tab" aria-selected="true">All Items</button>
+                        <button class="tab-btn" data-category="Tumblers" role="tab" aria-selected="false">Tumblers</button>
+                        <button class="tab-btn" data-category="Tumblers w/ Topper" role="tab" aria-selected="false">w/ Topper</button>
+                    </div>
+                    <div class="filter-theme">
+                        <label for="subcategory-dropdown" class="filter-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+                            Theme
+                        </label>
+                        <select id="subcategory-dropdown" class="theme-select">
+                            <option value="">All Themes</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="subcategory-filter">
-                    <label for="subcategory-dropdown">Theme:</label>
-                    <select id="subcategory-dropdown">
-                        <option value="">All Themes</option>
-                    </select>
+
+                <!-- Results Count -->
+                <div class="results-bar">
+                    <span id="results-count" class="results-count"></span>
                 </div>
-                <div id="exclusive-products" class="product-grid">
-                    <p class="loading" style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">Fetching the latest exclusives...</p>
+
+                <!-- Product Grid -->
+                <div id="exclusive-products" class="product-grid" role="main">
+                    <div class="loading-state" aria-live="polite">
+                        <div class="loading-spinner"></div>
+                        <p>Fetching the latest exclusives&hellip;</p>
+                    </div>
                 </div>
+
             </div>
         </section>
+
+        <!-- ── Custom CTA Strip ───────────────────────────── -->
+        <section class="cta-strip" aria-labelledby="cta-title">
+            <div class="cta-content">
+                <h2 id="cta-title">Don't see what you want?</h2>
+                <p>We love making custom designs. Tell us your vision and we'll bring it to life.</p>
+                <a href="index.html#custom-request" class="cta-btn">Request a Custom Design</a>
+            </div>
+        </section>
+
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Tubby's Tumblerz. Made with &#x1F496;</p>
+    <!-- ── Footer ─────────────────────────────────────────── -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="footer-brand">Tubby's Tumblerz</p>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="index.html">Home</a>
+                <a href="index.html#shop">Etsy Shop</a>
+                <a href="exclusive.html">Exclusive</a>
+                <a href="index.html#custom-request">Custom</a>
+            </nav>
+            <p class="footer-copy">&copy; 2024 Tubby's Tumblerz. Made with &#x1F496;</p>
         </div>
     </footer>
 
-    <!-- Product Details Modal -->
-    <div id="productModal" class="modal">
-        <div class="modal-details">
-            <span class="close-modal">&times;</span>
-            <img id="modalImg" src="" alt="">
-            <h2 id="modalTitle"></h2>
-            <p class="modal-price" id="modalPrice"></p>
-            <div class="modal-buttons">
-                <button id="buyNowBtn" class="btn btn-primary">Buy Now</button>
-                <a href="index.html#custom-request" class="btn outline-btn">Request Custom</a>
+    <!-- ── Product Modal ──────────────────────────────────── -->
+    <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-backdrop"></div>
+        <div class="modal-panel">
+            <button class="modal-close close-modal" aria-label="Close modal">&times;</button>
+            <div class="modal-image-wrap">
+                <img id="modalImg" src="" alt="" class="modal-img">
+            </div>
+            <div class="modal-info">
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <p class="modal-price" id="modalPrice"></p>
+                <div class="modal-actions">
+                    <button id="buyNowBtn" class="btn btn-buy">Buy Now</button>
+                    <a href="index.html#custom-request" class="btn btn-outline">Request Custom</a>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="exclusive-v3.js"></script>
+    <script>
+        // Hamburger toggle
+        const ham = document.querySelector('.hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        ham.addEventListener('click', () => {
+            const open = mobileNav.classList.toggle('open');
+            ham.setAttribute('aria-expanded', open);
+            mobileNav.setAttribute('aria-hidden', !open);
+        });
+
+        // Results count updater — hook into renderProducts
+        const _origRender = window.renderProducts;
+        // Observe DOM changes to update count
+        const grid = document.getElementById('exclusive-products');
+        const countEl = document.getElementById('results-count');
+        if (countEl && grid) {
+            const obs = new MutationObserver(() => {
+                const cards = grid.querySelectorAll('.product-card');
+                countEl.textContent = cards.length > 0 ? `${cards.length} item${cards.length !== 1 ? 's' : ''}` : '';
+            });
+            obs.observe(grid, { childList: true });
+        }
+    </script>
 </body>
 </html>
