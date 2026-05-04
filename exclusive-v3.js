@@ -50,7 +50,7 @@ function renderProducts(products) {
     const grid = document.getElementById('exclusive-products');
     grid.innerHTML = '';
     if (!products.length) {
-        grid.innerHTML = '<p style="text-align:center;color:var(--muted);font-size:1.1rem;">No items found.</p>';
+        grid.innerHTML = '<div class="empty-state"><p>No items found for this filter.</p></div>';
         return;
     }
     products.forEach(p => {
