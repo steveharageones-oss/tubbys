@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Tubby's Tumblerz</title>
+    <link rel="stylesheet" href="styles-v3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container nav-bar">
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#shop">Etsy Shop</a>
+                <a href="exclusive.html">Exclusive Inventory</a>
+                <a href="index.html#custom-request">Request Design</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="product-detail-page">
+            <div class="product-image-hero">
+                <img id="productHeroImg" src="" alt="">
+            </div>
+            <div class="container product-info">
+                <div class="product-meta">
+                    <span id="productCategoryBadge" class="category-badge"></span>
+                    <span id="productSubcategoryBadge" class="subcategory-badge"></span>
+                </div>
+                <h1 id="productTitle"></h1>
+                <p id="productPrice" class="product-price-large"></p>
+                <div class="product-actions">
+                    <button id="buyNowBtn" class="btn btn-primary btn-block">Buy Now</button>
+                    <a href="index.html#custom-request" class="btn outline-btn btn-block">Request Custom Design</a>
+                </div>
+                <a href="exclusive.html" class="back-link">← Back to Exclusive Inventory</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tubby's Tumblerz. Made with &#x1F496;</p>
+        </div>
+    </footer>
+
+    <!-- Sticky Bottom Bar (mobile) -->
+    <div class="sticky-product-bar" id="stickyBar">
+        <span id="stickyPrice" class="sticky-price"></span>
+        <button id="stickyBuyBtn" class="btn btn-primary">Buy Now</button>
+    </div>
+
+    <script src="product.js"></script>
+</body>
+</html>

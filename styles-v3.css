@@ -947,3 +947,200 @@ footer {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* --- Product Detail Page (Mobile-first, works on desktop too) --- */
+.product-detail-page {
+    background: var(--bg-light);
+    padding-bottom: 80px;
+}
+
+.product-image-hero {
+    width: 100%;
+    background: linear-gradient(135deg, #E0Fbfc 0%, #90E0EF66 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-bottom-left-radius: 12% 5%;
+    border-bottom-right-radius: 12% 5%;
+    margin-bottom: 20px;
+}
+
+.product-image-hero img {
+    width: 100%;
+    max-width: 500px;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 90, 156, 0.25);
+    border: 6px solid rgba(255,255,255,0.8);
+    background-color: var(--accent);
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 40px;
+}
+
+.product-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.category-badge,
+.subcategory-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.category-badge {
+    background: var(--primary);
+    color: white;
+}
+
+.subcategory-badge {
+    background: var(--secondary);
+    color: white;
+}
+
+.product-info h1 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+.product-price-large {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--secondary);
+    font-family: 'Baloo 2', cursive;
+    margin-bottom: 10px;
+}
+
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.btn-block {
+    width: 100%;
+    text-align: center;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--secondary);
+}
+
+/* Sticky Bottom Bar */
+.sticky-product-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid rgba(0, 119, 182, 0.15);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.06);
+    z-index: 110;
+}
+
+.sticky-product-bar .sticky-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    font-family: 'Baloo 2', cursive;
+}
+
+.sticky-product-bar .btn {
+    padding: 10px 28px;
+    font-size: 1rem;
+}
+
+/* Desktop: hide sticky bar */
+@media (min-width: 769px) {
+    .sticky-product-bar {
+        display: none;
+    }
+    .product-actions {
+        flex-direction: row;
+    }
+    .product-actions .btn-block {
+        width: auto;
+    }
+}
+
+/* Mobile-specific Enhancements for Exclusive Grid */
+@media (max-width: 768px) {
+    #exclusive-products.product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    #exclusive-products .product-card {
+        padding: 8px;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+    #exclusive-products .product-card h3 {
+        font-size: 0.75rem;
+        margin: 6px 0 2px;
+    }
+    #exclusive-products .product-card .product-price {
+        font-size: 0.85rem;
+    }
+    .category-tabs {
+        margin-bottom: 16px;
+    }
+    .subcategory-filter {
+        margin-bottom: 16px;
+    }
+    .product-image-hero {
+        border-bottom-left-radius: 10% 4%;
+        border-bottom-right-radius: 10% 4%;
+    }
+    .product-info h1 {
+        font-size: 1.7rem;
+    }
+    .product-price-large {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #exclusive-products.product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    #exclusive-products .product-card h3 {
+        font-size: 0.7rem;
+    }
+    #exclusive-products .product-card .product-price {
+        font-size: 0.8rem;
+    }
+}

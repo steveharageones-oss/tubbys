@@ -5,6 +5,15 @@ const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tq
 let allProducts = [];
 let activeCategory = 'all';
 let activeSubcategory = '';
+
+function slugify(name) {
+    return String(name)
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/[\s_-]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
 // ── Fetch & Parse ──────────────────────────────────────────────
 async function loadProducts() {
     try {
@@ -24,7 +33,7 @@ async function loadProducts() {
             const image = row.c[2] && row.c[2].v ? row.c[2].v : 'https://placehold.co/400x400?text=No+Image';
             const category = row.c[3] && row.c[3].v ? String(row.c[3].v).trim() : 'Tumblers';
             const subcategory = row.c[4] && row.c[4].v ? String(row.c[4].v).trim() : '';
-            return { name, price, image, category, subcategory };
+            return { name, price, image, category, subcategory, slug: slugify(name) };
         }).filter(Boolean);
     } catch (err) {
         console.error('Failed to load inventory:', err);
@@ -33,6 +42,10 @@ async function loadProducts() {
 }
 
 // ── Render ────────────────────────────────────────────────────
+function isMobile() {
+    return window.innerWidth <= 768;
+}
+
 function renderProducts(products) {
     const grid = document.getElementById('exclusive-products');
     grid.innerHTML = '';
@@ -53,14 +66,22 @@ function renderProducts(products) {
             <h3>${p.name}</h3>
             <p class="product-price">$${parseFloat(p.price).toFixed(2)}</p>
         `;
+
+        // Desktop: hover Buy Now triggers checkout
         card.querySelector('.hover-buy-btn').addEventListener('click', (e) => {
             e.stopPropagation();
             checkout(p, e.currentTarget);
         });
-        card.querySelector('.product-image-wrapper').addEventListener('click', (e) => {
-            if (e.target.closest('.hover-buy-btn')) return; // don't open modal from hover button
-            openModal(p);
+
+        // Click behavior: mobile -> detail page, desktop -> modal
+        card.addEventListener('click', () => {
+            if (isMobile()) {
+                window.location.href = `product.html?id=${encodeURIComponent(p.slug)}`;
+            } else {
+                openModal(p);
+            }
         });
+
         grid.appendChild(card);
     });
 }
@@ -112,9 +133,13 @@ function openModal(product) {
     modal.classList.add('show');
 }
 
-document.querySelector('.close-modal').addEventListener('click', () => {
-    document.getElementById('productModal').classList.remove('show');
-});
+// Close modal listeners
+const closeBtn = document.querySelector('.close-modal');
+if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+        document.getElementById('productModal').classList.remove('show');
+    });
+}
 
 window.addEventListener('click', e => {
     if (e.target === document.getElementById('productModal')) {
@@ -153,6 +178,12 @@ async function checkout(product, btnEl = null) {
 (async () => {
     const products = await loadProducts();
     allProducts = products;
+    // Cache for product detail page
+    try {
+        sessionStorage.setItem('tubbys_products', JSON.stringify(products));
+    } catch (e) {
+        console.warn('sessionStorage unavailable:', e);
+    }
     setupTabs();
     setupSubcategoryDropdown(products);
     applyFilters();
