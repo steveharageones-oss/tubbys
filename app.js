@@ -34,7 +34,7 @@ let imageUrl = 'https://placehold.co/300x300/90E0EF/005A9C?text=No+Image';
                 const price = product.price ? (product.price.amount / product.price.divisor).toFixed(2) : '0.00';
 
                 productCard.innerHTML = `
-                    <img src="${imageUrl}" alt="${product.title}" class="product-image" loading="lazy"
+                    <img src="${imageUrl}" alt="${product.title}" class="product-image"
                          onerror="this.onerror=null; this.src='https://placehold.co/300x300/90E0EF/005A9C?text=No+Image';">
                     <h3>${product.title.substring(0, 50)}...</h3>
                     <p class="price">$${price}</p>
