@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 productCard.className = 'product-card';
                 
                 const imageArray = product.images || product.Images;
-                let imageUrl = 'https://via.placeholder.com/300x300?text=No+Image';
+let imageUrl = 'https://placehold.co/300x300/90E0EF/005A9C?text=No+Image';
 
                 if (imageArray && imageArray.length > 0) {
                     const imgObj = imageArray[0];
@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const price = product.price ? (product.price.amount / product.price.divisor).toFixed(2) : '0.00';
 
                 productCard.innerHTML = `
-                    <img src="${imageUrl}" alt="${product.title}" class="product-image">
+                    <img src="${imageUrl}" alt="${product.title}" class="product-image" loading="lazy"
+                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/90E0EF/005A9C?text=No+Image';">
                     <h3>${product.title.substring(0, 50)}...</h3>
                     <p class="price">$${price}</p>
                     <a href="${product.url}" target="_blank" class="btn outline-btn">View on Etsy</a>

@@ -24,28 +24,34 @@ export default async function handler(req, res) {
         });
         const data = await response.json();
 
-        // Step 3: BRUTE FORCE IMAGES - If Etsy ignores includes=Images, we fetch them one by one
+        // Step 3: BRUTE FORCE IMAGES - If Etsy ignores includes=Images, fetch per listing
         if (data.results) {
             const imagePromises = data.results.map(async (item) => {
-                // If it already has images (unlikely based on our diagnostics), skip
-                if (item.images || item.Images) return item;
-                
+                const hasImages = (item.images && Array.isArray(item.images) && item.images.length > 0)
+                               || (item.Images && Array.isArray(item.Images) && item.Images.length > 0);
+                if (hasImages) return item;
+
                 try {
-                    // Explicitly ask for this specific listing's images
-                    const imgRes = await fetch(`https://openapi.etsy.com/v3/application/listings/${item.listing_id}/images`, {
-                        headers: { 'x-api-key': ETSY_API_KEY }
-                    });
+                    const imgRes = await fetch(
+                        `https://openapi.etsy.com/v3/application/listings/${item.listing_id}/images`,
+                        { headers: { 'x-api-key': ETSY_API_KEY } }
+                    );
+                    if (!imgRes.ok) {
+                        console.error(`Image fetch HTTP ${imgRes.status} for listing ${item.listing_id}`);
+                        return item;
+                    }
                     const imgData = await imgRes.json();
-                    if (imgData.results) {
+                    if (imgData.results && imgData.results.length > 0) {
                         item.images = imgData.results;
+                    } else {
+                        console.error(`No images returned for listing ${item.listing_id}`);
                     }
                 } catch (e) {
-                    console.error("Fallback image fetch failed for", item.listing_id);
+                    console.error("Fallback image fetch failed for", item.listing_id, e.message);
                 }
                 return item;
             });
-            
-            // Wait for all image fetches to finish
+
             data.results = await Promise.all(imagePromises);
         }
 
