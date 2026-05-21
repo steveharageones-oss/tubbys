@@ -45,6 +45,12 @@
         #exclusive-products .product-card .category-badge {
             display: none;
         }
+        #exclusive-products .shipping-note {
+            font-size: 0.6rem;
+            color: #999;
+            margin: 0;
+            line-height: 1;
+        }
         #exclusive-products .product-image,
         #exclusive-products .product-card img {
             width: 100%;
@@ -96,14 +102,20 @@
                 margin: 3px 0 1px;
                 line-height: 1.15;
             }
-            #exclusive-products .product-card .product-price {
-                font-size: 0.72rem;
-            }
-            #exclusive-products .product-image,
+#exclusive-products .product-card .product-price {
+            font-size: 0.72rem;
+        }
+        #exclusive-products .product-image,
             #exclusive-products .product-card img {
                 aspect-ratio: 1 / 1;
                 border-radius: 5px;
             }
+        }
+        /* ── Modal shipping disclaimer ── */
+        .modal-shipping {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -154,6 +166,7 @@
             <img id="modalImg" src="" alt="">
             <h2 id="modalTitle"></h2>
             <p class="modal-price" id="modalPrice"></p>
+            <p class="modal-shipping">Shipping &amp; handling calculated at checkout</p>
             <div class="modal-buttons">
                 <button id="buyNowBtn" class="btn btn-primary">Buy Now</button>
             </div>

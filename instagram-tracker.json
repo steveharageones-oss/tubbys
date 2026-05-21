@@ -1,0 +1,31 @@
+{
+  "products": [
+    {"name": "Mandalorian", "price": 18, "image": "https://i.postimg.cc/7LMBB7Cs/Venice-AI-so-Eh54f-4x.png", "category": "Tumblers", "posted": true},
+    {"name": "Peter Pan", "price": 18, "image": "https://i.postimg.cc/jqpRY03L/Venice-AI-z-Xz-Qc-UK.png", "category": "Tumblers", "posted": false},
+    {"name": "Darth Vader", "price": 18, "image": "https://i.postimg.cc/43VzwT0T/Venice-AI-ey-EL1dh.png", "category": "Tumblers", "posted": true},
+    {"name": "Minion", "price": 38, "image": "https://i.postimg.cc/wBZMVqwK/Venice-AI-D6A2HUm-4x.png", "category": "Tumblers w/ Topper", "posted": true},
+    {"name": "NFL Teams", "price": 18, "image": "https://i.postimg.cc/3rP6HPc3/Venice-AI-mv5H2VC-4x.png", "category": "Tumblers", "posted": false},
+    {"name": "Joker X-Mas", "price": 38, "image": "https://i.postimg.cc/jdtQVTrm/Venice-AI-j-Ue6a7i-4x.png", "category": "Tumblers w/ Topper", "posted": true},
+    {"name": "Superman X-Mas", "price": 38, "image": "https://i.postimg.cc/VsD56Ptb/Venice-AI-4Odevs-W-4x.png", "category": "Tumblers w/ Topper", "posted": true},
+    {"name": "Lucy & Marcy", "price": 38, "image": "https://i.postimg.cc/TYK23Lf8/Venice-AI-4qjs7Zp-4x.png", "category": "Tumblers w/ Topper", "posted": true},
+    {"name": "Snoopy", "price": 38, "image": "https://i.postimg.cc/90Kh7bVN/Venice-AI-fh3A09w-4x.png", "category": "Tumblers w/ Topper", "posted": true},
+    {"name": "Charlie Brown X-Mas", "price": 38, "image": "https://i.postimg.cc/pTdbc4Lc/Venice-AI-4t6v-NJT-4x.png", "category": "Tumblers w/ Topper", "posted": false},
+    {"name": "Grinch", "price": 38, "image": "https://i.postimg.cc/SN90PWmq/Venice_AI_AT56Qdo_4x.png", "category": "Tumblers w/ Topper", "posted": false},
+    {"name": "Glinda", "price": 38, "image": "https://i.postimg.cc/0Q3sLC4C/Venice-AI-n-Ce-TE3C-4x.png", "category": "Tumblers w/ Topper", "posted": true},
+    {"name": "Beetlejuice Sandworm", "price": 38, "image": "https://i.postimg.cc/bvkVz9d3/Venice-AI-Acxd-ECf-4x.png", "category": "Tumblers w/ Topper", "posted": true},
+    {"name": "Beetlejuice", "price": 38, "image": "https://i.postimg.cc/d0qspjkn/Beetlejuice-Ad.png", "category": "Tumblers w/ Topper", "posted": true},
+    {"name": "Donkey Kong", "price": 38, "image": "https://i.postimg.cc/SKyS3f2t/Donkey-Kong.png", "category": "Tumblers w/ Topper", "posted": true},
+    {"name": "Stay Puft Marshmallow Man", "price": 38, "image": "https://i.postimg.cc/DwQfxMZr/Ghostbusters.png", "category": "Tumblers w/ Topper", "posted": false},
+    {"name": "Pokemon Pikachu", "price": 38, "image": "https://i.postimg.cc/jjsxm4wh/Pikachu-Santa.png", "category": "Tumblers w/ Topper", "posted": false},
+    {"name": "Dallas Cowboys QB", "price": 38, "image": "https://i.postimg.cc/zDHCkv3x/Dak-Cowboys.png", "category": "Tumblers w/ Topper", "posted": false},
+    {"name": "Batman", "price": 38, "image": "https://i.postimg.cc/GtnHKcSJ/Batman.png", "category": "Tumblers w/ Topper", "posted": false},
+    {"name": "Cookie Monster", "price": 38, "image": "https://i.postimg.cc/4d68FyPk/Venice-AI-i-UNqt-Yb-4x.png", "category": "Tumblers w/ Topper", "posted": true},
+    {"name": "Slurpee", "price": 38, "image": "https://i.postimg.cc/placeholder/slurpee.png", "category": "Tumblers w/ Topper", "posted": true}
+  ],
+  "last_posted_index": 14,
+  "schedule": {
+    "time": "10:00",
+    "timezone": "America/Chicago"
+  },
+  "hashtags": ["TubbysTumblerz", "HandcraftedTumblers", "CustomTumblers", "TumblerLife", "MadeInUSA", "TumblerAddict", "GlitterTumbler", "SmallBusiness", "ShopSmall"]
+}

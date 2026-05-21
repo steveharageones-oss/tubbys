@@ -538,6 +538,12 @@ footer {
     font-family: 'Baloo 2', cursive;
     margin-bottom: 0;
 }
+#exclusive-products .shipping-note {
+    font-size: 0.65rem;
+    color: #999;
+    margin: 0;
+    line-height: 1;
+}
 #exclusive-products .product-card .price,
 #exclusive-products .product-card .btn,
 #exclusive-products .product-card .category-badge {
@@ -658,8 +664,13 @@ footer {
     font-size: 1.8rem;
     color: var(--secondary);
     font-weight: 700;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     font-family: 'Baloo 2', cursive;
+}
+.modal-shipping {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 20px;
 }
 .modal-details .btn {
     display: inline-block;

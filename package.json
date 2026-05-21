@@ -3,6 +3,24 @@
     "version": "1.0.0",
     "private": true,
     "dependencies": {
+        "sharp": "^0.34.5",
         "stripe": "^17.0.0"
-    }
+    },
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://oauth2@github.com/steveharageones-oss/tubbys.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "bugs": {
+        "url": "https://github.com/steveharageones-oss/tubbys/issues"
+    },
+    "homepage": "https://github.com/steveharageones-oss/tubbys#readme"
 }

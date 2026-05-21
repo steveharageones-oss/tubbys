@@ -40,11 +40,11 @@ function renderProducts(products) {
     products.forEach(p => {
         const card = document.createElement('div');
         card.className = 'product-card';
-        card.innerHTML = `
+card.innerHTML = `
             <img src="${p.image}" alt="${p.name}" class="product-image" loading="lazy" onerror="this.src='https://placehold.co/400x400?text=No+Image'">
             <h3>${p.name}</h3>
             <p class="product-price">$${parseFloat(p.price).toFixed(2)}</p>
-            <span class="category-badge">${p.category}</span>
+            <p class="shipping-note">+ shipping</p>
         `;
         card.addEventListener('click', () => openModal(p));
         grid.appendChild(card);

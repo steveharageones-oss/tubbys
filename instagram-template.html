@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tubby's Tumblerz - Instagram Post</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: 'Quicksand', 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, #90E0EF 0%, #00B4D8 40%, #005A9C 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .card {
+    width: 940px;
+    height: 940px;
+    background: white;
+    border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(0,31,63,0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+  .watermark-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 12px;
+    background: linear-gradient(90deg, #00B4D8, #90E0EF, #005A9C, #90E0EF, #00B4D8);
+  }
+  .image-area {
+    flex: 1;
+    background: #f0f8ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    position: relative;
+    min-height: 0;
+  }
+  .image-area img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,90,156,0.15);
+  }
+  .info-bar {
+    background: white;
+    padding: 30px 50px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 3px solid #90E0EF;
+  }
+  .product-name {
+    font-family: 'Baloo 2', 'Quicksand', cursive;
+    font-size: 42px;
+    font-weight: 800;
+    color: #005A9C;
+    line-height: 1.1;
+  }
+  .price {
+    font-size: 36px;
+    font-weight: 700;
+    color: #00B4D8;
+  }
+  .cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+  }
+  .etsy-link {
+    background: #005A9C;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hashtag {
+    color: #005A9C;
+    font-size: 20px;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+  .brand-tag {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,31,63,0.3);
+    font-family: 'Baloo 2', cursive;
+  }
+  .water-drops {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 140px;
+    height: 140px;
+    opacity: 0.15;
+  }
+  .top-label {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    background: #00B4D8;
+    color: white;
+    padding: 6px 24px 6px 40px;
+    border-radius: 0 20px 20px 0;
+    font-size: 20px;
+    font-weight: 700;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="watermark-top"></div>
+    <div class="top-label" id="categoryLabel">Tumblers w/ Topper</div>
+    <div class="image-area">
+      <img id="productImage" src="https://i.postimg.cc/GtnHKcSJ/Batman.png" alt="Product">
+    </div>
+    <div class="info-bar">
+      <div class="product-name" id="productName">Batman</div>
+      <div class="price" id="productPrice">$38</div>
+      <div class="cta-row">
+        <span class="etsy-link">Shop on Etsy →</span>
+        <span class="hashtag">#TubbysTumblerz</span>
+      </div>
+    </div>
+    <div class="brand-tag">Tubby's Tumblerz</div>
+  </div>
+</body>
+</html>
