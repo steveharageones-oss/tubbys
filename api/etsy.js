@@ -32,10 +32,13 @@ export default async function handler(req, res) {
                 if (hasImages) return item;
 
                 try {
+                    const controller = new AbortController();
+                    const timeout = setTimeout(() => controller.abort(), 3000);
                     const imgRes = await fetch(
                         `https://openapi.etsy.com/v3/application/listings/${item.listing_id}/images`,
-                        { headers: { 'x-api-key': ETSY_API_KEY } }
+                        { headers: { 'x-api-key': ETSY_API_KEY }, signal: controller.signal }
                     );
+                    clearTimeout(timeout);
                     if (!imgRes.ok) {
                         console.error(`Image fetch HTTP ${imgRes.status} for listing ${item.listing_id}`);
                         return item;
@@ -55,6 +58,7 @@ export default async function handler(req, res) {
             data.results = await Promise.all(imagePromises);
         }
 
+        res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
         res.status(200).json(data);
     } catch (error) {
         console.error(error);
