@@ -24,16 +24,16 @@ export default async function handler(req, res) {
         });
         const data = await response.json();
 
-        // Step 3: BRUTE FORCE IMAGES - If Etsy ignores includes=Images, fetch per listing
+        // Step 3: BRUTE FORCE IMAGES - sequential to avoid Etsy 429 rate limits on image endpoint
         if (data.results) {
-            const imagePromises = data.results.map(async (item) => {
+            for (const item of data.results) {
                 const hasImages = (item.images && Array.isArray(item.images) && item.images.length > 0)
                                || (item.Images && Array.isArray(item.Images) && item.Images.length > 0);
-                if (hasImages) return item;
+                if (hasImages) continue;
 
                 try {
                     const controller = new AbortController();
-                    const timeout = setTimeout(() => controller.abort(), 3000);
+                    const timeout = setTimeout(() => controller.abort(), 7000);
                     const imgRes = await fetch(
                         `https://openapi.etsy.com/v3/application/listings/${item.listing_id}/images`,
                         { headers: { 'x-api-key': ETSY_API_KEY }, signal: controller.signal }
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
                     clearTimeout(timeout);
                     if (!imgRes.ok) {
                         console.error(`Image fetch HTTP ${imgRes.status} for listing ${item.listing_id}`);
-                        return item;
+                        continue;
                     }
                     const imgData = await imgRes.json();
                     if (imgData.results && imgData.results.length > 0) {
@@ -52,10 +52,10 @@ export default async function handler(req, res) {
                 } catch (e) {
                     console.error("Fallback image fetch failed for", item.listing_id, e.message);
                 }
-                return item;
-            });
 
-            data.results = await Promise.all(imagePromises);
+                // Small delay between calls to stay under Etsy's rate limit
+                await new Promise(resolve => setTimeout(resolve, 300));
+            }
         }
 
         res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
