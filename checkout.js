@@ -19,43 +19,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Render order summary from cart
     renderOrderSummary(cart);
 
-    // Initialize Stripe with publishable key
-    // We'll fetch it from our backend to avoid hardcoding
+    // Initialize Stripe checkout
     try {
-        const total = Cart.getCartTotal() + 13.00; // subtotal + shipping
-        currentTotal = total;
-
-        // Create PaymentIntent via serverless function
-        const response = await fetch('/api/create-payment-intent', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                items: cart,
-                shippingAddress: {
-                    name: document.getElementById('ship-name').value || 'pending',
-                    email: document.getElementById('ship-email').value || 'pending',
-                    address: document.getElementById('ship-address').value || 'pending',
-                    city: document.getElementById('ship-city').value || 'pending',
-                    state: document.getElementById('ship-state').value || 'pending',
-                    zip: document.getElementById('ship-zip').value || 'pending',
-                }
+        // Fetch publishable key and create PaymentIntent in parallel
+        const [configResp, paymentResp] = await Promise.all([
+            fetch('/api/config'),
+            fetch('/api/create-payment-intent', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    items: cart,
+                    shippingAddress: {
+                        name: document.getElementById('ship-name').value || 'pending',
+                        email: document.getElementById('ship-email').value || 'pending',
+                        address: document.getElementById('ship-address').value || 'pending',
+                        city: document.getElementById('ship-city').value || 'pending',
+                        state: document.getElementById('ship-state').value || 'pending',
+                        zip: document.getElementById('ship-zip').value || 'pending',
+                    }
+                })
             })
-        });
+        ]);
 
-        if (!response.ok) {
-            const errData = await response.json().catch(() => ({}));
-            throw new Error(errData.error || 'Failed to create payment intent');
-        }
-
-        const data = await response.json();
-        currentTotal = parseFloat(data.total);
-
-        // Initialize Stripe — fetch publishable key from our config endpoint
-        const configResp = await fetch('/api/config');
         const configData = await configResp.json();
         if (!configData.publishableKey) {
             throw new Error('Stripe publishable key not configured');
         }
+
+        if (!paymentResp.ok) {
+            const errData = await paymentResp.json().catch(() => ({}));
+            throw new Error(errData.error || 'Failed to create payment intent');
+        }
+
+        const data = await paymentResp.json();
+        currentTotal = parseFloat(data.total);
+
+        // Initialize Stripe
         stripe = Stripe(configData.publishableKey);
 
         elements = stripe.elements({
@@ -74,12 +73,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
 
+        // Clear loading placeholder BEFORE mounting (Stripe mounts async into this div)
+        document.getElementById('payment-element').innerHTML = '';
+
         // Create and mount the Payment Element
         paymentElement = elements.create('payment');
+        paymentElement.on('ready', () => {
+            console.log('Stripe Payment Element ready');
+        });
+        paymentElement.on('error', (err) => {
+            console.error('Stripe Payment Element error:', err);
+        });
         paymentElement.mount('#payment-element');
-
-        // Clear loading placeholder
-        document.getElementById('payment-element').innerHTML = '';
 
         // Enable pay button and update amount
         const payBtn = document.getElementById('pay-button');
