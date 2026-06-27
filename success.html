@@ -82,13 +82,20 @@
     </footer>
 
     <script>
-        // Display the Stripe session ID from the URL
+        // Display the Stripe Payment Intent ID from the URL
         const params = new URLSearchParams(window.location.search);
-        const sessionId = params.get('session_id');
-        if (sessionId) {
-            document.getElementById('orderId').textContent = 'Order Reference: ' + sessionId.slice(-8).toUpperCase();
+        const piId = params.get('pi_id') || params.get('payment_intent');
+        if (piId) {
+            document.getElementById('orderId').textContent = 'Order Reference: ' + piId.slice(-8).toUpperCase();
         } else {
             document.getElementById('orderId').textContent = 'Order placed successfully!';
+        }
+
+        // Clear the cart after successful payment
+        if (typeof Cart !== 'undefined') {
+            Cart.clearCart();
+        } else {
+            localStorage.removeItem('tubbys_cart');
         }
     </script>
 </body>

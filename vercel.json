@@ -5,6 +5,14 @@
       "destination": "/api/create-checkout-session.js"
     },
     {
+      "source": "/api/create-payment-intent",
+      "destination": "/api/create-payment-intent.js"
+    },
+    {
+      "source": "/api/config",
+      "destination": "/api/config.js"
+    },
+    {
       "source": "/api/etsy",
       "destination": "/api/etsy.js"
     }

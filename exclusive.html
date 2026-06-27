@@ -26,6 +26,14 @@
                 <a href="exclusive.html">Exclusive Inventory</a>
                 <a href="index.html#custom-request">Custom Requests</a>
             </nav>
+            <a href="#" id="cart-icon" class="cart-nav-icon" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                    <path d="M3 3h2l2.5 12.5h12L22 7H6"/>
+                    <circle cx="9" cy="20" r="1.5"/>
+                    <circle cx="17" cy="20" r="1.5"/>
+                </svg>
+                <span id="cart-badge" class="cart-badge" style="display:none;">0</span>
+            </a>
         </div>
     </header>
 
@@ -71,6 +79,24 @@
         </div>
     </div>
 
+    <!-- Cart Drawer -->
+    <div id="cart-overlay" class="cart-overlay"></div>
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-drawer-header">
+            <h2>Your Cart</h2>
+            <button id="cart-close-btn" class="cart-close-btn">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-drawer-footer">
+            <div class="cart-subtotal-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0.00</span>
+            </div>
+            <button id="cart-checkout-btn" class="btn btn-primary btn-large" style="display:none;">Checkout</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
     <script src="exclusive.js"></script>
 </body>
 </html>

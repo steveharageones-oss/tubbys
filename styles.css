@@ -693,3 +693,461 @@ footer {
 .modal-buttons .btn-primary:disabled {
     background-color: #999;
 }
+
+/* ================================================================
+   CART SYSTEM — Nav Icon, Drawer, Checkout Page
+   ================================================================ */
+
+/* --- Cart Nav Icon --- */
+.cart-nav-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary);
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.cart-nav-icon:hover {
+    color: var(--secondary);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--secondary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* --- Cart Drawer Overlay --- */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.cart-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- Cart Drawer --- */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 380px;
+    max-width: 90vw;
+    height: 100%;
+    background: white;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+    transition: right 0.3s ease;
+}
+
+.cart-drawer.open {
+    right: 0;
+}
+
+.cart-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 2px solid var(--accent);
+}
+
+.cart-drawer-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.cart-close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.cart-close-btn:hover {
+    opacity: 1;
+}
+
+/* --- Cart Items --- */
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px 20px;
+}
+
+.cart-empty {
+    text-align: center;
+    color: var(--text-dark);
+    opacity: 0.5;
+    font-size: 1.1rem;
+    margin-top: 60px;
+    font-weight: 600;
+}
+
+.cart-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+    background: var(--accent);
+}
+
+.cart-item-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.cart-item-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.cart-item-price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--secondary);
+    font-family: 'Baloo 2', cursive;
+    margin: 0 0 8px 0;
+}
+
+.cart-qty-controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-qty-controls button {
+    width: 26px;
+    height: 26px;
+    border: 2px solid var(--accent);
+    background: white;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    transition: background 0.2s;
+}
+
+.cart-qty-controls button:hover {
+    background: var(--accent);
+}
+
+.cart-qty {
+    font-weight: 700;
+    font-size: 1rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+.cart-item-remove {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.cart-item-remove:hover {
+    color: #e74c3c;
+}
+
+/* --- Cart Drawer Footer --- */
+.cart-drawer-footer {
+    padding: 20px 25px;
+    border-top: 2px solid var(--accent);
+    background: #f8fbff;
+}
+
+.cart-subtotal-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-family: 'Baloo 2', cursive;
+    color: var(--primary);
+}
+
+.cart-subtotal-row span:last-child {
+    color: var(--secondary);
+}
+
+/* ================================================================
+   CHECKOUT PAGE
+   ================================================================ */
+
+.checkout-main {
+    padding: 40px 0 80px;
+    min-height: 60vh;
+}
+
+.checkout-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.checkout-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.checkout-form-column {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.checkout-summary-column {
+    flex: 1;
+    position: sticky;
+    top: 100px;
+}
+
+.checkout-section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.checkout-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent);
+}
+
+/* --- Shipping Form --- */
+.shipping-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-row {
+    display: flex;
+}
+
+.form-row-2 {
+    gap: 12px;
+}
+
+.form-row-2 input {
+    flex: 1;
+}
+
+.shipping-form input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 2px solid #e1e1e1;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: border-color 0.3s;
+}
+
+.shipping-form input:focus {
+    outline: none;
+    border-color: var(--secondary);
+}
+
+/* --- Payment Element --- */
+#payment-element {
+    min-height: 200px;
+}
+
+.payment-loading {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-dark);
+    opacity: 0.5;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.payment-secure-note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    opacity: 0.6;
+    margin-top: 12px;
+}
+
+.payment-error {
+    background: #fff0f0;
+    border: 2px solid #df1b41;
+    color: #df1b41;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* --- Pay Button --- */
+.btn-pay {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.3rem;
+}
+
+.btn-pay:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* --- Order Summary --- */
+.order-summary {
+    background: #f8fbff;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    gap: 10px;
+}
+
+.order-item-info {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+}
+
+.order-item-qty {
+    font-weight: 700;
+    color: var(--secondary);
+    flex-shrink: 0;
+}
+
+.order-item-name {
+    color: var(--text-dark);
+    line-height: 1.3;
+}
+
+.order-item-price {
+    font-weight: 700;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.summary-divider {
+    height: 2px;
+    background: var(--accent);
+    margin: 15px 0;
+    border-radius: 2px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.summary-total {
+    font-size: 1.3rem;
+    font-family: 'Baloo 2', cursive;
+    color: var(--primary);
+    padding-top: 12px;
+    border-top: 1px solid #ddd;
+    margin-top: 6px;
+}
+
+.summary-total span:last-child {
+    color: var(--secondary);
+}
+
+/* --- Empty Cart Message --- */
+.empty-cart-msg {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.empty-cart-msg h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.empty-cart-msg p {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+/* --- Checkout Page Responsive --- */
+@media (max-width: 900px) {
+    .checkout-layout {
+        flex-direction: column;
+    }
+
+    .checkout-summary-column {
+        position: static;
+        order: -1;
+    }
+
+    .checkout-form-column {
+        order: 1;
+    }
+}

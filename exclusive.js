@@ -72,8 +72,16 @@ function openModal(product) {
     document.getElementById('modalTitle').textContent = product.name;
     document.getElementById('modalPrice').textContent = '$' + parseFloat(product.price).toFixed(2);
     const buyBtn = document.getElementById('buyNowBtn');
-    buyBtn.onclick = () => checkout(product);
+    buyBtn.textContent = 'Add to Cart';
+    buyBtn.onclick = () => addToCart(product);
     modal.classList.add('show');
+}
+
+function addToCart(product) {
+    Cart.addToCart(product);
+    // Close the product modal
+    document.getElementById('productModal').classList.remove('show');
+    // Cart drawer opens automatically via Cart.addToCart()
 }
 
 document.querySelector('.close-modal').addEventListener('click', () => {
@@ -85,32 +93,6 @@ window.addEventListener('click', e => {
         document.getElementById('productModal').classList.remove('show');
     }
 });
-
-// ── Stripe Checkout ───────────────────────────────────────────
-async function checkout(product) {
-    const btn = document.getElementById('buyNowBtn');
-    btn.textContent = 'Processing…';
-    btn.disabled = true;
-    try {
-        const resp = await fetch('/api/create-checkout-session', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: product.name,
-                price: parseFloat(product.price),
-                image: product.image
-            })
-        });
-        if (!resp.ok) throw new Error('Checkout failed');
-        const data = await resp.json();
-        window.location = data.url;
-    } catch (err) {
-        alert('Checkout error — please try again.');
-        console.error(err);
-        btn.textContent = 'Buy Now';
-        btn.disabled = false;
-    }
-}
 
 // ── Init ─────────────────────────────────────────────────────
 (async () => {

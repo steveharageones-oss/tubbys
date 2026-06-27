@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Tubby's Tumblerz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <header>
+        <div class="container nav-bar">
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#shop">Etsy Shop</a>
+                <a href="exclusive.html">Exclusive Inventory</a>
+                <a href="index.html#custom-request">Custom Requests</a>
+            </nav>
+            <a href="#" id="cart-icon" class="cart-nav-icon" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                    <path d="M3 3h2l2.5 12.5h12L22 7H6"/>
+                    <circle cx="9" cy="20" r="1.5"/>
+                    <circle cx="17" cy="20" r="1.5"/>
+                </svg>
+                <span id="cart-badge" class="cart-badge" style="display:none;">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="checkout-main">
+        <div class="container">
+            <h1 class="checkout-title">Checkout</h1>
+            <div id="checkout-content" class="checkout-layout">
+                <!-- Left column: shipping + payment -->
+                <div class="checkout-form-column">
+                    <!-- Shipping Address -->
+                    <section class="checkout-section">
+                        <h2>Shipping Address</h2>
+                        <form id="shipping-form" class="shipping-form">
+                            <div class="form-row">
+                                <input type="text" id="ship-name" name="name" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-row">
+                                <input type="email" id="ship-email" name="email" placeholder="Email (for confirmation)" required>
+                            </div>
+                            <div class="form-row">
+                                <input type="text" id="ship-address" name="address" placeholder="Street Address" required>
+                            </div>
+                            <div class="form-row form-row-2">
+                                <input type="text" id="ship-city" name="city" placeholder="City" required>
+                                <input type="text" id="ship-state" name="state" placeholder="State" required maxlength="2" pattern="[A-Za-z]{2}">
+                            </div>
+                            <div class="form-row">
+                                <input type="text" id="ship-zip" name="zip" placeholder="ZIP Code" required pattern="[0-9]{5}">
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- Payment Element -->
+                    <section class="checkout-section">
+                        <h2>Payment</h2>
+                        <div id="payment-element">
+                            <div class="payment-loading">Loading secure payment form...</div>
+                        </div>
+                    </section>
+
+                    <!-- Pay Button -->
+                    <button id="pay-button" class="btn btn-primary btn-large btn-pay" disabled>
+                        <span id="pay-button-text">Pay $0.00</span>
+                    </button>
+                    <p class="payment-secure-note">🔒 Your payment is secured by Stripe</p>
+                    <div id="payment-error" class="payment-error" style="display:none;"></div>
+                </div>
+
+                <!-- Right column: order summary -->
+                <div class="checkout-summary-column">
+                    <section class="checkout-section order-summary">
+                        <h2>Order Summary</h2>
+                        <div id="order-items"></div>
+                        <div class="summary-divider"></div>
+                        <div class="summary-line">
+                            <span>Subtotal</span>
+                            <span id="summary-subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Shipping</span>
+                            <span id="summary-shipping">$13.00</span>
+                        </div>
+                        <div class="summary-line summary-total">
+                            <span>Total</span>
+                            <span id="summary-total">$0.00</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Empty cart message (hidden by default) -->
+            <div id="empty-cart-msg" class="empty-cart-msg" style="display:none;">
+                <h2>Your cart is empty</h2>
+                <p>Head back to the shop and add some tumblers!</p>
+                <a href="exclusive.html" class="btn btn-primary">Browse Exclusives</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div id="cart-overlay" class="cart-overlay"></div>
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-drawer-header">
+            <h2>Your Cart</h2>
+            <button id="cart-close-btn" class="cart-close-btn">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-drawer-footer">
+            <div class="cart-subtotal-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0.00</span>
+            </div>
+            <button id="cart-checkout-btn" class="btn btn-primary btn-large" style="display:none;">Checkout</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tubby's Tumblerz. Made with &#x1F496;</p>
+        </div>
+    </footer>
+
+    <script src="cart.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>
