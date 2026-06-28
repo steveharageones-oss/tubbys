@@ -1,5 +1,5 @@
 // exclusive.js — Tubby's Tumblerz Exclusive Inventory Page
-// Now reads from local products.json instead of Google Sheets
+// Reads from local products.json, links to product detail pages
 
 const PRODUCTS_URL = '/products.json';
 
@@ -28,13 +28,17 @@ function renderProducts(products) {
     products.forEach(p => {
         const card = document.createElement('div');
         card.className = 'product-card';
+        card.style.cursor = 'pointer';
         card.innerHTML = `
             <img src="${p.image}" alt="${p.name}" class="product-image" loading="lazy" onerror="this.src='https://placehold.co/400x400?text=No+Image'">
             <h3>${p.name}</h3>
             <p class="product-price">$${parseFloat(p.price).toFixed(2)}</p>
             <p class="shipping-note">+ shipping</p>
         `;
-        card.addEventListener('click', () => openModal(p));
+        // Navigate to product detail page on click
+        card.addEventListener('click', () => {
+            window.location.href = `/products/${p.slug}`;
+        });
         grid.appendChild(card);
     });
 }
@@ -52,35 +56,6 @@ function setupTabs(products) {
         });
     });
 }
-
-// ── Product Modal ─────────────────────────────────────────────
-function openModal(product) {
-    const modal = document.getElementById('productModal');
-    document.getElementById('modalImg').src = product.image;
-    document.getElementById('modalTitle').textContent = product.name;
-    document.getElementById('modalPrice').textContent = '$' + parseFloat(product.price).toFixed(2);
-    const buyBtn = document.getElementById('buyNowBtn');
-    buyBtn.textContent = 'Add to Cart';
-    buyBtn.onclick = () => addToCart(product);
-    modal.classList.add('show');
-}
-
-function addToCart(product) {
-    Cart.addToCart(product);
-    // Close the product modal
-    document.getElementById('productModal').classList.remove('show');
-    // Cart drawer opens automatically via Cart.addToCart()
-}
-
-document.querySelector('.close-modal').addEventListener('click', () => {
-    document.getElementById('productModal').classList.remove('show');
-});
-
-window.addEventListener('click', e => {
-    if (e.target === document.getElementById('productModal')) {
-        document.getElementById('productModal').classList.remove('show');
-    }
-});
 
 // ── Init ─────────────────────────────────────────────────────
 (async () => {

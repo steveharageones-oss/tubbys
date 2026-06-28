@@ -3,28 +3,29 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exclusive Inventory | Tubby's Tumblerz</title>
+    <title id="page-title">Product | Tubby's Tumblerz</title>
 
-    <meta property="og:title" content="Exclusive Inventory | Tubby's Tumblerz">
-    <meta property="og:description" content="Special themes and requested designs that aren't available on our main shop.">
-    <meta property="og:image" content="https://tubbystumblerz.com/og-image.png">
-    <meta property="og:url" content="https://tubbystumblerz.com/exclusive.html">
-    <meta property="og:type" content="website">
+    <!-- Dynamic OG tags filled by product.js -->
+    <meta property="og:title" id="og-title" content="Tubby's Tumblerz">
+    <meta property="og:description" id="og-desc" content="Custom handcrafted tumblers from Tubby's Tumblerz.">
+    <meta property="og:image" id="og-image" content="https://tubbystumblerz.com/og-image.png">
+    <meta property="og:url" id="og-url" content="https://tubbystumblerz.com">
+    <meta property="og:type" content="product">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="container nav-bar">
             <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="index.html#shop">Etsy Shop</a>
-                <a href="exclusive.html">Exclusive Inventory</a>
-                <a href="index.html#custom-request">Custom Requests</a>
+                <a href="/index.html">Home</a>
+                <a href="/index.html#shop">Etsy Shop</a>
+                <a href="/exclusive.html">Exclusive Inventory</a>
+                <a href="/index.html#custom-request">Custom Requests</a>
             </nav>
             <a href="#" id="cart-icon" class="cart-nav-icon" aria-label="Shopping cart">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
@@ -37,26 +38,30 @@
         </div>
     </header>
 
-    <main>
-        <section class="hero page-header">
-            <div class="container">
-                <h1>Exclusive Inventory</h1>
-                <p>Special themes and requested designs that aren't available on our main shop!</p>
-            </div>
-        </section>
+    <main class="product-page-main">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="/index.html">Home</a>
+                <span class="breadcrumb-sep">/</span>
+                <a href="/exclusive.html">Exclusive Inventory</a>
+                <span class="breadcrumb-sep">/</span>
+                <span id="breadcrumb-name">Product</span>
+            </nav>
 
-        <section class="shop-section">
-            <div class="container">
-                <div class="category-tabs">
-                    <button class="tab-btn active" data-category="all">All</button>
-                    <button class="tab-btn" data-category="Tumblers">Tumblers</button>
-                    <button class="tab-btn" data-category="Tumblers w/ Topper">Tumblers w/ Topper</button>
-                </div>
-                <div id="exclusive-products" class="product-grid">
-                    <p class="loading" style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">Fetching the latest exclusives...</p>
+            <!-- Product Detail -->
+            <div id="product-detail" class="product-detail-layout">
+                <div class="product-detail-loading">
+                    <p>Loading product...</p>
                 </div>
             </div>
-        </section>
+
+            <!-- Related Products -->
+            <section class="related-products-section" id="related-section" style="display:none;">
+                <h2>You Might Also Like</h2>
+                <div id="related-products" class="related-products-grid"></div>
+            </section>
+        </div>
     </main>
 
     <footer>
@@ -82,7 +87,7 @@
         </div>
     </div>
 
-    <script src="cart.js"></script>
-    <script src="exclusive.js"></script>
+    <script src="/cart.js"></script>
+    <script src="/product.js"></script>
 </body>
 </html>

@@ -15,6 +15,10 @@
     {
       "source": "/api/etsy",
       "destination": "/api/etsy.js"
+    },
+    {
+      "source": "/products/:slug",
+      "destination": "/product.html"
     }
   ]
 }
