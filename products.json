@@ -1,0 +1,149 @@
+[
+  {
+    "name": "Mandalorian",
+    "slug": "mandalorian",
+    "price": "18.00",
+    "image": "/images/products/mandalorian.png",
+    "category": "Tumblers"
+  },
+  {
+    "name": "Peter Pan",
+    "slug": "peter-pan",
+    "price": "18.00",
+    "image": "/images/products/peter-pan.png",
+    "category": "Tumblers"
+  },
+  {
+    "name": "Darth Vader",
+    "slug": "darth-vader",
+    "price": "18.00",
+    "image": "/images/products/darth-vader.png",
+    "category": "Tumblers"
+  },
+  {
+    "name": "NFL Teams",
+    "slug": "nfl-teams",
+    "price": "18.00",
+    "image": "/images/products/nfl-teams.png",
+    "category": "Tumblers"
+  },
+  {
+    "name": "Minion",
+    "slug": "minion",
+    "price": "38.00",
+    "image": "/images/products/minion.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Joker X-Mas",
+    "slug": "joker-x-mas",
+    "price": "38.00",
+    "image": "/images/products/joker-x-mas.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Superman X-Mas",
+    "slug": "superman-x-mas",
+    "price": "38.00",
+    "image": "/images/products/superman-x-mas.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Lucy & Marcy",
+    "slug": "lucy-marcy",
+    "price": "38.00",
+    "image": "/images/products/lucy-marcy.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Snoopy",
+    "slug": "snoopy",
+    "price": "38.00",
+    "image": "/images/products/snoopy.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Charlie Brown X-Mas",
+    "slug": "charlie-brown-x-mas",
+    "price": "38.00",
+    "image": "/images/products/charlie-brown-x-mas.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Grinch",
+    "slug": "grinch",
+    "price": "38.00",
+    "image": "/images/products/grinch.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Glinda",
+    "slug": "glinda",
+    "price": "38.00",
+    "image": "/images/products/glinda.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Beetlejuice Sandworm",
+    "slug": "beetlejuice-sandworm",
+    "price": "38.00",
+    "image": "/images/products/beetlejuice-sandworm.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Beetlejuice",
+    "slug": "beetlejuice",
+    "price": "38.00",
+    "image": "/images/products/beetlejuice.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Donkey Kong",
+    "slug": "donkey-kong",
+    "price": "38.00",
+    "image": "/images/products/donkey-kong.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Stay Puft Marshmallow Man",
+    "slug": "stay-puft-marshmallow-man",
+    "price": "38.00",
+    "image": "/images/products/stay-puft-marshmallow-man.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Pokemon Pikachu",
+    "slug": "pokemon-pikachu",
+    "price": "38.00",
+    "image": "/images/products/pokemon-pikachu.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Dallas Cowboys QB",
+    "slug": "dallas-cowboys-qb",
+    "price": "38.00",
+    "image": "/images/products/dallas-cowboys-qb.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Cookie Monster",
+    "slug": "cookie-monster",
+    "price": "38.00",
+    "image": "/images/products/cookie-monster.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Slurpee",
+    "slug": "slurpee",
+    "price": "38.00",
+    "image": "/images/products/slurpee.png",
+    "category": "Tumblers w/ Topper"
+  },
+  {
+    "name": "Kool-Aid",
+    "slug": "kool-aid",
+    "price": "38.00",
+    "image": "/images/products/kool-aid.png",
+    "category": "Tumblers w/ Topper"
+  }
+]

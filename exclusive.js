@@ -1,28 +1,16 @@
-// exclusive-inventory.js — Tubby's Tumblerz Exclusive Inventory Page
+// exclusive.js — Tubby's Tumblerz Exclusive Inventory Page
+// Now reads from local products.json instead of Google Sheets
 
-const SHEET_ID = '1tU05kkuOz2t3c7A4s_FeUIhn0P2oUHAPa-KX_jyFJw0';
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+const PRODUCTS_URL = '/products.json';
 
 // ── Fetch & Parse ──────────────────────────────────────────────
 async function loadProducts() {
     try {
-        const resp = await fetch(SHEET_URL);
+        const resp = await fetch(PRODUCTS_URL);
         if (!resp.ok) throw new Error('HTTP ' + resp.status);
-        const text = await resp.text();
-        const jsonString = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
-        const data = JSON.parse(jsonString);
-        const rows = data.table.rows;
-        if (!rows || rows.length === 0) return [];
-        return rows.filter(row => row.c[0] && row.c[0].v).map(row => {
-            const name = String(row.c[0].v).trim();
-            if (name.toLowerCase() === 'name') return null;
-            let price = row.c[1] && row.c[1].v !== null ? row.c[1].v : '0.00';
-            if (typeof price === 'number') price = price.toFixed(2);
-            else price = String(price).replace('$', '');
-            const image = row.c[2] && row.c[2].v ? row.c[2].v : 'https://placehold.co/400x400?text=No+Image';
-            const category = row.c[3] && row.c[3].v ? String(row.c[3].v).trim() : 'Tumblers';
-            return { name, price, image, category };
-        }).filter(Boolean);
+        const products = await resp.json();
+        if (!products || products.length === 0) return [];
+        return products;
     } catch (err) {
         console.error('Failed to load inventory:', err);
         return [];
@@ -40,7 +28,7 @@ function renderProducts(products) {
     products.forEach(p => {
         const card = document.createElement('div');
         card.className = 'product-card';
-card.innerHTML = `
+        card.innerHTML = `
             <img src="${p.image}" alt="${p.name}" class="product-image" loading="lazy" onerror="this.src='https://placehold.co/400x400?text=No+Image'">
             <h3>${p.name}</h3>
             <p class="product-price">$${parseFloat(p.price).toFixed(2)}</p>
