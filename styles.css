@@ -1286,6 +1286,82 @@ footer {
     font-size: 0.85rem;
     color: #888;
     opacity: 0.7;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 31, 63, 0.1);
+}
+
+/* --- Highlights (Etsy-style Item Details) --- */
+.product-detail-highlights {
+    margin-bottom: 30px;
+}
+
+.product-detail-highlights h3,
+.product-detail-shipping-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: var(--primary);
+}
+
+.highlights-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.highlight-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.highlight-icon {
+    color: var(--primary);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.highlight-label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.highlight-value {
+    color: var(--text-dark);
+    opacity: 0.85;
+}
+
+/* --- Shipping & Policies --- */
+.product-detail-shipping-info {
+    margin-bottom: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 31, 63, 0.1);
+}
+
+.shipping-info-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.85;
+    margin-bottom: 8px;
+}
+
+.shipping-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 768px) {
+    .highlight-row,
+    .shipping-info-row {
+        font-size: 1rem;
+    }
 }
 
 /* --- Not Found --- */

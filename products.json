@@ -4,146 +4,331 @@
     "slug": "mandalorian",
     "price": "18.00",
     "image": "/images/products/mandalorian.png",
-    "category": "Tumblers"
+    "category": "Tumblers",
+    "description": "This is the Way. Show off your Mandalorian fandom with this custom 20oz tumbler featuring Beskar armor-inspired detailing. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Peter Pan",
     "slug": "peter-pan",
     "price": "18.00",
     "image": "/images/products/peter-pan.png",
-    "category": "Tumblers"
+    "category": "Tumblers",
+    "description": "Second star to the right and straight on till morning. This Peter Pan themed tumbler is perfect for your next adventure. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Darth Vader",
     "slug": "darth-vader",
     "price": "18.00",
     "image": "/images/products/darth-vader.png",
-    "category": "Tumblers"
+    "category": "Tumblers",
+    "description": "Join the dark side. This Darth Vader themed tumbler is a must-have for any Star Wars fan. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "NFL Teams",
     "slug": "nfl-teams",
     "price": "18.00",
     "image": "/images/products/nfl-teams.png",
-    "category": "Tumblers"
+    "category": "Tumblers",
+    "description": "Rep your team in style. Custom NFL team tumblers available for any franchise. Message me with your team choice. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Minion",
     "slug": "minion",
     "price": "38.00",
     "image": "/images/products/minion.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Bello! This Minion tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw. A fun gift for any Despicable Me fan.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Joker X-Mas",
     "slug": "joker-x-mas",
     "price": "38.00",
     "image": "/images/products/joker-x-mas.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Why so serious about the holidays? This Christmas Joker tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Superman X-Mas",
     "slug": "superman-x-mas",
     "price": "38.00",
     "image": "/images/products/superman-x-mas.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Faster than a speeding sleigh. This Christmas Superman tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Lucy & Marcy",
     "slug": "lucy-marcy",
     "price": "38.00",
     "image": "/images/products/lucy-marcy.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Classic Peanuts charm with Lucy & Marcy. This tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Snoopy",
     "slug": "snoopy",
     "price": "38.00",
     "image": "/images/products/snoopy.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Good grief, this one's adorable. Snoopy tumbler with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Charlie Brown X-Mas",
     "slug": "charlie-brown-x-mas",
     "price": "38.00",
     "image": "/images/products/charlie-brown-x-mas.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Christmas time is here. This Charlie Brown Christmas tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Grinch",
     "slug": "grinch",
     "price": "38.00",
     "image": "/images/products/grinch.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "You're a mean one, Mr. Grinch. This Grinch tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw. Perfect for the holidays.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Glinda",
     "slug": "glinda",
     "price": "38.00",
     "image": "/images/products/glinda.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "You've always had the power, my dear. This Glinda the Good Witch tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Beetlejuice Sandworm",
     "slug": "beetlejuice-sandworm",
     "price": "38.00",
     "image": "/images/products/beetlejuice-sandworm.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "It's showtime. This Beetlejuice Sandworm tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Beetlejuice",
     "slug": "beetlejuice",
     "price": "38.00",
     "image": "/images/products/beetlejuice.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Beetlejuice, Beetlejuice, Beetlejuice. This Beetlejuice tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Donkey Kong",
     "slug": "donkey-kong",
     "price": "38.00",
     "image": "/images/products/donkey-kong.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Classic arcade vibes. This Donkey Kong tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Stay Puft Marshmallow Man",
     "slug": "stay-puft-marshmallow-man",
     "price": "38.00",
     "image": "/images/products/stay-puft-marshmallow-man.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Who ya gonna call? This Stay Puft Marshmallow Man tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Pokemon Pikachu",
     "slug": "pokemon-pikachu",
     "price": "38.00",
     "image": "/images/products/pokemon-pikachu.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Pika pika. This Pikachu tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw. Gotta drink 'em all.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Dallas Cowboys QB",
     "slug": "dallas-cowboys-qb",
     "price": "38.00",
     "image": "/images/products/dallas-cowboys-qb.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "How about them Cowboys. This Dallas Cowboys QB tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Cookie Monster",
     "slug": "cookie-monster",
     "price": "38.00",
     "image": "/images/products/cookie-monster.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Me want cookie. This Cookie Monster tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Slurpee",
     "slug": "slurpee",
     "price": "38.00",
     "image": "/images/products/slurpee.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Slurp it up. This Slurpee character tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   },
   {
     "name": "Kool-Aid",
     "slug": "kool-aid",
     "price": "38.00",
     "image": "/images/products/kool-aid.png",
-    "category": "Tumblers w/ Topper"
+    "category": "Tumblers w/ Topper",
+    "description": "Oh yeah. This Kool-Aid Man tumbler comes with a custom 3D character topper on the lid. Great for hot and cold drinks and comes with a straw.",
+    "highlights": [
+      {"label": "Materials", "value": "Stainless Steel"},
+      {"label": "Capacity", "value": "20 fluid ounces"},
+      {"label": "Insulation", "value": "Double-wall vacuum insulated"},
+      {"label": "Topper", "value": "Custom 3D character topper"},
+      {"label": "Includes", "value": "Spill-resistant lid & straw"},
+      {"label": "Care", "value": "Hand wash only"}
+    ]
   }
 ]

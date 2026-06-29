@@ -45,10 +45,49 @@ function renderProduct(product) {
     // Update breadcrumb
     document.getElementById('breadcrumb-name').textContent = product.name;
 
-    // Build description HTML if product has one
+    // Build highlights section (Etsy-style)
+    const highlightsHTML = product.highlights && product.highlights.length > 0
+        ? `<div class="product-detail-highlights">
+              <h3>Item details</h3>
+              <div class="highlights-grid">
+                  ${product.highlights.map(h => `
+                      <div class="highlight-row">
+                          <span class="highlight-icon" aria-hidden="true">&#10003;</span>
+                          <span class="highlight-label">${h.label}:</span>
+                          <span class="highlight-value">${h.value}</span>
+                      </div>
+                  `).join('')}
+              </div>
+           </div>`
+        : '';
+
+    // Build description section
     const descriptionHTML = product.description
         ? `<div class="product-detail-description"><h3>Description</h3><p>${product.description}</p></div>`
         : '';
+
+    // Build shipping & policies section (standard across all products)
+    const shippingHTML = `
+        <div class="product-detail-shipping-info">
+            <h3>Shipping and return policies</h3>
+            <div class="shipping-info-row">
+                <span class="shipping-icon" aria-hidden="true">&#128230;</span>
+                <span>Ships from New Jersey</span>
+            </div>
+            <div class="shipping-info-row">
+                <span class="shipping-icon" aria-hidden="true">&#9201;</span>
+                <span>Made to order. Prep time varies.</span>
+            </div>
+            <div class="shipping-info-row">
+                <span class="shipping-icon" aria-hidden="true">&#128176;</span>
+                <span>Shipping calculated at checkout</span>
+            </div>
+            <div class="shipping-info-row">
+                <span class="shipping-icon" aria-hidden="true">&#128260;</span>
+                <span>Returns & exchanges accepted</span>
+            </div>
+        </div>
+    `;
 
     // Build the layout
     const container = document.getElementById('product-detail');
@@ -62,11 +101,13 @@ function renderProduct(product) {
             <h1 class="product-detail-name">${product.name}</h1>
             <p class="product-detail-price">$${parseFloat(product.price).toFixed(2)}</p>
             <p class="product-detail-shipping">+ shipping (calculated at checkout)</p>
-            ${descriptionHTML}
             <div class="product-detail-actions">
                 <button class="btn btn-primary btn-large" id="add-to-cart-btn">Add to Cart</button>
             </div>
             <p class="product-detail-secure">Secure checkout powered by Stripe</p>
+            ${highlightsHTML}
+            ${descriptionHTML}
+            ${shippingHTML}
         </div>
     `;
 
