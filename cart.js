@@ -167,7 +167,7 @@ const Cart = {
             checkoutBtn.addEventListener('click', () => {
                 if (this.getCart().length === 0) return;
                 this.closeDrawer();
-                window.location.href = 'checkout.html';
+                window.location.href = '/checkout.html';
             });
         }
     }
