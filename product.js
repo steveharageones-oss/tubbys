@@ -84,7 +84,7 @@ function renderProduct(product) {
             </div>
             <div class="shipping-info-row">
                 <span class="shipping-icon" aria-hidden="true">&#128260;</span>
-                <span>Returns & exchanges accepted</span>
+                <span>Returns &amp; exchanges accepted within 30 days</span>
             </div>
         </div>
     `;
