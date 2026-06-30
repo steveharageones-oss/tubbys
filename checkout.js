@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     colorBackground: '#ffffff',
                     colorText: '#001F3F',
                     colorDanger: '#df1b41',
-                    fontFamily: 'Quicksand, sans-serif',
+                    fontFamily: 'Inter, sans-serif',
                     borderRadius: '12px',
                     spacingUnit: '12px',
                 }

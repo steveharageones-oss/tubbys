@@ -7,7 +7,7 @@
 
     <!-- Open Graph / Link Preview -->
     <meta property="og:title" content="Tubby's Tumblerz | Custom Handcrafted Tumblers">
-    <meta property="og:description" content="Stay cool with our custom styled, handcrafted tumblers. Made in USA. Shop exclusives not available anywhere else.">
+    <meta property="og:description" content="Handcrafted custom tumblers made in the USA. Shop our exclusive designs you won't find anywhere else.">
     <meta property="og:image" content="https://tubbystumblerz.com/og-image.png">
     <meta property="og:url" content="https://tubbystumblerz.com">
     <meta property="og:type" content="website">
@@ -16,8 +16,7 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="stylesheet" href="styles.css">
-    <!-- Fun, bubbly, and readable Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -25,7 +24,7 @@
             <nav class="main-nav">
                 <a href="index.html">Home</a>
                 <a href="#shop">Etsy Shop</a>
-                <a href="exclusive.html">Exclusive Inventory</a>
+                <a href="#exclusives">Shop Exclusives</a>
                 <a href="#custom-request">Custom Requests</a>
             </nav>
             <a href="#" id="cart-icon" class="cart-nav-icon" aria-label="Shopping cart">
@@ -41,19 +40,13 @@
 
     <main>
         <section id="home" class="hero">
-            <div class="container hero-split">
-                <div class="hero-content">
-                    <img src="logo.png" alt="Tubby's Tumblerz Logo" class="hero-logo">
-                    <h1>Stay cool with our custom styled, handcrafted tumblers.</h1>
-                    <p>Made in USA.</p>
-                    <div class="hero-buttons">
-                        <a href="#shop" class="btn btn-primary">Shop Etsy</a>
-                        <a href="exclusive.html" class="btn btn-secondary">View Exclusives</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <!-- Placeholder for the AI model image! Once you generate it, put the link here! -->
-                    <img src="https://via.placeholder.com/800x1000/90E0EF/005A9C?text=Your+Model+Ad+Image+Here" alt="Model holding tumbler" id="dynamic-ad-img" class="promo-img">
+            <div class="container hero-content">
+                <img src="logo.png" alt="Tubby's Tumblerz Logo" class="hero-logo">
+                <h1>Custom styled, handcrafted tumblers.</h1>
+                <p>Made in USA.</p>
+                <div class="hero-buttons">
+                    <a href="#shop" class="btn btn-primary">Shop Etsy</a>
+                    <a href="#exclusives" class="btn btn-secondary">View Exclusives</a>
                 </div>
             </div>
         </section>
@@ -61,13 +54,27 @@
         <section id="shop" class="shop-section">
             <div class="container">
                 <h2>Our Etsy Collection</h2>
-                <p class="subtitle">Swipe to view our ready-to-ship designs directly from Etsy!</p>
-                <!-- Changed from product-grid to product-carousel for a horizontal scroll -->
+                <p class="subtitle">Swipe to view our ready-to-ship designs directly from Etsy</p>
                 <div id="etsy-products" class="product-carousel">
                     <p class="loading">Loading latest creations...</p>
                 </div>
                 <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
-                    <a href="https://www.etsy.com/shop/TubbysTumblerz?ref=shop-header-name&listing_id=4472641245&from_page=listing" target="_blank" class="btn" style="background-color: var(--primary); color: white; display: inline-block; padding: 15px 40px; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,90,156,0.2);">View our entire Etsy collection here &rarr;</a>
+                    <a href="https://www.etsy.com/shop/TubbysTumblerz?ref=shop-header-name&listing_id=4472641245&from_page=listing" target="_blank" class="btn btn-primary">View our entire Etsy collection &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="exclusives" class="exclusives-section">
+            <div class="container">
+                <h2>Exclusive Designs</h2>
+                <p class="subtitle">Special themes and requested designs only available here</p>
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">All</button>
+                    <button class="tab-btn" data-category="Tumblers">Tumblers</button>
+                    <button class="tab-btn" data-category="Tumblers w/ Topper">Tumblers w/ Topper</button>
+                </div>
+                <div id="exclusive-products" class="product-grid">
+                    <p class="loading" style="font-size: 1.1rem; font-weight: 600; color: var(--primary);">Fetching the latest exclusives...</p>
                 </div>
             </div>
         </section>
@@ -75,14 +82,14 @@
         <section id="custom-request" class="custom-section">
             <div class="container">
                 <div class="form-wrapper">
-                    <h2>✨ Request a Custom Design ✨</h2>
+                    <h2>Request a Custom Design</h2>
                     <p>Have an idea that isn't in the shop? Want a specific theme or character? Let's make it happen!</p>
                     
                     <form action="https://formspree.io/f/mzdjqzgg" method="POST" class="request-form">
                         <input type="text" name="Name" placeholder="Your Name" required>
                         <input type="email" name="Email" placeholder="Your Email" required>
                         <textarea name="Idea" rows="6" placeholder="Tell me about your dream tumbler or topper! (Theme, colors, style, occasion...)" required></textarea>
-                        <button type="submit" class="btn btn-primary btn-large">Send My Request!</button>
+                        <button type="submit" class="btn btn-primary btn-large">Send My Request</button>
                     </form>
                 </div>
             </div>
@@ -92,7 +99,7 @@
 <footer>
         <div class="container footer-content">
             <div class="footer-left">
-                <p>&copy; 2024 Tubby's Tumblerz. Made with 💖</p>
+                <p>&copy; 2026 Tubby's Tumblerz. Handcrafted in the USA.</p>
             </div>
             <div class="footer-right">
                 <a href="https://instagram.com/tubbys_tumblerz" target="_blank" class="social-link" aria-label="Follow us on Instagram">
@@ -124,5 +131,6 @@
 
     <script src="cart.js"></script>
     <script src="app.js"></script>
+    <script src="exclusive.js"></script>
 </body>
 </html>
